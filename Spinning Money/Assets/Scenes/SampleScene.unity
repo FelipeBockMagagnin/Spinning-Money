@@ -5944,7 +5944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.05680591}
   m_AnchorMax: {x: 0.21781377, y: 0.11587766}
-  m_AnchoredPosition: {x: -306.6383, y: -861.29114}
+  m_AnchoredPosition: {x: -306.6383, y: -861.29}
   m_SizeDelta: {x: 180.34091, y: 165.50539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &709902849
@@ -6468,6 +6468,7 @@ GameObject:
   - component: {fileID: 923091289}
   - component: {fileID: 923091292}
   - component: {fileID: 923091291}
+  - component: {fileID: 923091293}
   - component: {fileID: 923091290}
   m_Layer: 5
   m_Name: Item1
@@ -6535,7 +6536,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 923091291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 923091293}
+        m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &923091291
@@ -6575,6 +6587,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923091288}
   m_CullTransparentMesh: 0
+--- !u!114 &923091293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923091288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175a39342f4476b4c94843c777edbe0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FirstBuy: 0
+  name: Item1
+  initialCost: 10
+  initialRevenue: 10
+  coefficient: 1.07
+  productionMultiplicator: 1
+  buttonTxt: {fileID: 754120508}
 --- !u!1 &984525338
 GameObject:
   m_ObjectHideFlags: 0
@@ -7564,7 +7595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.29134178}
   m_AnchorMax: {x: 0.21069634, y: 0.34821942}
-  m_AnchoredPosition: {x: -505.46964, y: -884.5996}
+  m_AnchoredPosition: {x: -505.46964, y: -884.60077}
   m_SizeDelta: {x: 181.03922, y: 165.7906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445059232
