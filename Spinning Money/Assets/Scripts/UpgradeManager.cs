@@ -23,7 +23,7 @@ public class UpgradeManager : MonoBehaviour
     int numberOfItems;
 
     public Text buttonTxt;
-
+    public Text moneyPerSecondTxT;
 
 
     private void Start()
@@ -68,8 +68,8 @@ public class UpgradeManager : MonoBehaviour
     private void Update()
     {
         buttonTxt.text = actualCost.ToString("0.00");
+        moneyPerSecondTxT.text = "Money/s: " + actualRevenue.ToString("0.00");
     }
-
 
     public void UpgradeItem()
     {

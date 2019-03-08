@@ -21,6 +21,8 @@ public class InputManager : MonoBehaviour
     public float y;
     public float z;
 
+    public float rotationMult;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,10 @@ public class InputManager : MonoBehaviour
         lastX = 0;
         lastY = 0;
         lastZ = 0;
+        if(rotationMult == 0)
+        {
+            rotationMult = 1;
+        }
     }
 
     // Update is called once per frame
@@ -70,6 +76,6 @@ public class InputManager : MonoBehaviour
         moneyTxt.text = "Money: " + MoneyManager.money.ToString("0.00");
 
 
-        transform.Rotate(0, 0, z);
+        transform.Rotate(0, 0, z * rotationMult);
     }
 }
