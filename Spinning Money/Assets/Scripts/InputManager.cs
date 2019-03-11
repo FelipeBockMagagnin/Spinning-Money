@@ -27,6 +27,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moneyTxt = GameObject.Find("MoneyTxt").GetComponent<Text>(); 
         lastX = 0;
         lastY = 0;
         lastZ = 0;

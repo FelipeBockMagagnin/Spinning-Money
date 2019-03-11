@@ -5,6 +5,7 @@ using UnityEngine;
 public static class MoneyManager
 {
     public static double money;
+    public static double moneyMultiply;
 
     public static void Pay(double value)
     {

@@ -6,7 +6,7 @@ public class BagManager : MonoBehaviour
 {
     public Transform spawnPosition;
 
-    int bagLevel, moneyLevel, moneyQuantityLevel, rotationLevel;
+    public int bagLevel, moneyLevel, moneyQuantityLevel, rotationLevel;
 
     public Material money_1, money_2, money_3, money_4, money_5;
     public GameObject bag_1, bag_2, bag_3, bag_4, bag_5, bag_6;
@@ -20,22 +20,16 @@ public class BagManager : MonoBehaviour
     float rotationMult;
     float numberOfMoney;
 
-    private void Start()
-    {
-        checkLevels();
-        setBagAtributes();
-    }
-
     //checa os niveis para startar os objetos
-    void checkLevels()
+    void SetLevels(int _bagLevel, int _moneyLevel, int _moneyQuantityLevel, int _rotationLevel)
     {
-        bagLevel = 1;
-        moneyLevel = 1;
-        moneyQuantityLevel = 1;
-        rotationLevel = 1;
+        bagLevel = _bagLevel;
+        moneyLevel = _moneyLevel;
+        moneyQuantityLevel = _moneyQuantityLevel;
+        rotationLevel = _rotationLevel;
     }
 
-    void setBagAtributes()
+    public void setBagAtributes()
     {
         //set bag level
         spawnBag(bagLevel);
@@ -52,52 +46,13 @@ public class BagManager : MonoBehaviour
 
     void ChangeRotation(int _rotationLevel)
     {
-        switch (_rotationLevel)
-        {
-            case 1:
-                //rotation rate 1
-                break;
-            case 2:
-                //rotation rate 2
-                break;
-            case 3:
-                //rotation rate 3
-                break;
-            case 4:
-                //rotation rate 4
-                break;
-            case 5:
-                //rotation rate 5
-                break;
-            case 6:
-                //rotation rate 6
-                break;
-        }
+        inputManager = actualBag.GetComponent<InputManager>();
+        inputManager.rotationMult = _rotationLevel;
     }
 
     void ChangeMoneySpawnRate(int _moneySpawnRate)
     {
-        switch (_moneySpawnRate)
-        {
-            case 1:
-                //spawn rate 1
-                break;
-            case 2:
-                //spawn rate 2
-                break;
-            case 3:
-                //spawn rate 3
-                break;
-            case 4:
-                //spawn rate 4
-                break;
-            case 5:
-                //spawn rate 5
-                break;
-            case 6:
-                //spawn rate 6
-                break;
-        }
+        
     }
 
     void changeMoney(int _moneyLevel)
@@ -151,9 +106,4 @@ public class BagManager : MonoBehaviour
                 break;
         }
     }
-
-
-
-
-
 }
