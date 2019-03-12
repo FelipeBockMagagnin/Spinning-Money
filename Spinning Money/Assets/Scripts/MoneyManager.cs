@@ -15,7 +15,8 @@ public static class MoneyManager
 
     public static void GrowMultiply(double value)
     {
-        moneyMultiply += value;
+        moneyMultiply *= 2;
+        Debug.Log("money multiply: " + moneyMultiply);
     }
 
     public static void Pay(double value)

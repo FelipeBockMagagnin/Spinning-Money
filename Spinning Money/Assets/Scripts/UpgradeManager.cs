@@ -72,8 +72,8 @@ public class UpgradeManager : MonoBehaviour
     void setMultiply()
     {
         if(numberOfItems % 5 == 0)
-        {
-            productionMultiplicator *= 2;
+        {            
+            this.productionMultiplicator *= (numberOfItems/5)*2;
         }
     }
 

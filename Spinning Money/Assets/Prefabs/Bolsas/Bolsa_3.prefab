@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7773554921300338818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a065c271f7299e345b876345d8934bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyTxt: {fileID: 0}
   lastX: 0
   lastY: 0
   lastZ: 0
@@ -104,6 +103,7 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
+  rotationMult: 0
 --- !u!198 &7773554921300338876
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0

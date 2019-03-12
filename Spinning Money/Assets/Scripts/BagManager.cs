@@ -48,12 +48,11 @@ public class BagManager : MonoBehaviour
     {
         inputManager = actualBag.GetComponent<InputManager>();
         inputManager.rotationMult = _rotationLevel;
-        MoneyManager.GrowMultiply(_rotationLevel);
     }
 
     void ChangeMoneySpawnRate(int _moneySpawnRate)
     {
-        MoneyManager.GrowMultiply(_moneySpawnRate);
+
     }
 
     void changeMoney(int _moneyLevel)
@@ -76,7 +75,7 @@ public class BagManager : MonoBehaviour
                 actualBag.GetComponent<ParticleSystemRenderer>().material = money_5;
                 break;
         }
-        MoneyManager.GrowMultiply(_moneyLevel);
+        
     }
 
     void spawnBag(int _baglevel)
@@ -107,6 +106,5 @@ public class BagManager : MonoBehaviour
                 actualBag = Instantiate(bag_6, spawnPosition.position, Quaternion.identity);
                 break;
         }
-        MoneyManager.GrowMultiply(_baglevel);
     }
 }

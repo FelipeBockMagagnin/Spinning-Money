@@ -7,23 +7,35 @@ public class BagButtonManager : MonoBehaviour
 {
     [Header("Bag Level")]
     public Button bagLevelbutton;
+    [HideInInspector]
     public int startBagLevel;
+    [HideInInspector]
     public int actualBagLevel;
+    public double[] bagValues;
 
     [Header("Money Level")]
     public Button moneyLevelbutton;
+    [HideInInspector]
     public int startMoneyLevel;
+    [HideInInspector]
     public int actualMoneyLevel;
+    public double[] moneyValues;
 
     [Header("Money Quantity Level")]
     public Button moneyQuantitybutton;
+    [HideInInspector]
     public int startMoneyQuantityLevel;
+    [HideInInspector]
     public int actualMoneyQuantityLevel;
+    public double[] moneyQuantityValues;
 
     [Header("Rotation Level")]
     public Button rotationLevelbutton;
+    [HideInInspector]
     public int startRotationLevel;
+    [HideInInspector]
     public int actualRotationLevel;
+    public double[] rotationValues;
 
     public BagManager bagManager;
 
@@ -65,24 +77,24 @@ public class BagButtonManager : MonoBehaviour
 
     void SetTextButtons()
     {
-        bagLevelbutton.GetComponentInChildren<Text>().text = "Bag Upgrade - Lvl " + actualBagLevel.ToString();
-        moneyLevelbutton.GetComponentInChildren<Text>().text = "Money Upgrade - Lvl " + actualMoneyLevel.ToString();
-        moneyQuantitybutton.GetComponentInChildren<Text>().text = "Money Quantity Upgrade - Lvl " + actualMoneyQuantityLevel.ToString();
-        rotationLevelbutton.GetComponentInChildren<Text>().text = "Rotation Upgrade - Lvl " + actualRotationLevel.ToString();
+        bagLevelbutton.GetComponentInChildren<Text>().text = "Bag Up - Lvl " + actualBagLevel.ToString() + " cost: " + bagValues[actualBagLevel - 1];
+        moneyLevelbutton.GetComponentInChildren<Text>().text = "Money Upgrade - Lvl " + actualMoneyLevel.ToString() + " cost: " + moneyValues[actualMoneyLevel - 1];
+        moneyQuantitybutton.GetComponentInChildren<Text>().text = "Money Quantity Upgrade - Lvl " + actualMoneyQuantityLevel.ToString() + " cost: " + moneyQuantityValues[actualMoneyQuantityLevel - 1];
+        rotationLevelbutton.GetComponentInChildren<Text>().text = "Rotation Upgrade - Lvl " + actualRotationLevel.ToString() + " cost: " + rotationValues[actualRotationLevel - 1];
     }
 
     public void BuyButton(string name)
     {
         if(name == "bag upgrade")
         {
-            float priceBag = actualBagLevel * 1000;
-            if(MoneyManager.money >= priceBag && actualBagLevel < 6)
+            if(MoneyManager.money >= bagValues[actualBagLevel - 1] && actualBagLevel < 6)
             {
+                MoneyManager.Pay(bagValues[actualBagLevel - 1]);
                 actualBagLevel++;
                 bagManager.bagLevel = actualBagLevel;
-                bagManager.setBagAtributes();
-                MoneyManager.Pay(priceBag);
+                bagManager.setBagAtributes();                
                 Debug.Log("Comprou bag upgrade, nivel atual: " + actualBagLevel);
+                MoneyManager.GrowMultiply(actualBagLevel);
             }
             else
             {
@@ -91,13 +103,13 @@ public class BagButtonManager : MonoBehaviour
         }
         else if (name == "money upgrade")
         {
-            float priceMoney = actualMoneyLevel * 1000;
-            if(MoneyManager.money >= priceMoney && actualMoneyLevel < 5)
+            if(MoneyManager.money >= moneyValues[actualMoneyLevel - 1] && actualMoneyLevel < 5)
             {
+                MoneyManager.Pay(moneyValues[actualMoneyLevel - 1]);
                 actualMoneyLevel++;
                 bagManager.moneyLevel = actualMoneyLevel;
                 bagManager.setBagAtributes();
-                MoneyManager.Pay(priceMoney);
+                MoneyManager.GrowMultiply(actualMoneyLevel);
                 Debug.Log("Comprou money upgrade, nivel atual: " + actualMoneyLevel);
             } 
             else
@@ -107,13 +119,13 @@ public class BagButtonManager : MonoBehaviour
         }
         else if (name == "money quantity upgrade")
         {
-            float priceMoneyQuantity = actualMoneyQuantityLevel * 1000;
-            if (MoneyManager.money >= priceMoneyQuantity && actualMoneyQuantityLevel < 5)
+            if (MoneyManager.money >= moneyQuantityValues[actualMoneyQuantityLevel - 1] && actualMoneyQuantityLevel < 5)
             {
+                MoneyManager.Pay(moneyQuantityValues[actualMoneyQuantityLevel - 1]);
                 actualMoneyQuantityLevel++;
                 bagManager.moneyQuantityLevel = actualMoneyQuantityLevel;
                 bagManager.setBagAtributes();
-                MoneyManager.Pay(priceMoneyQuantity);
+                MoneyManager.GrowMultiply(actualMoneyQuantityLevel);
                 Debug.Log("Comprou money quantity upgrade, nivel atual: " + actualMoneyQuantityLevel);
             }
             else
@@ -123,13 +135,13 @@ public class BagButtonManager : MonoBehaviour
         }
         else if (name == "rotation upgrade")
         {
-            float priceRotation = actualRotationLevel * 1000;
-            if (MoneyManager.money >= priceRotation && actualRotationLevel < 5)
+            if (MoneyManager.money >= rotationValues[actualRotationLevel - 1] && actualRotationLevel < 5)
             {
+                MoneyManager.Pay(rotationValues[actualRotationLevel - 1]);
                 actualRotationLevel++;
                 bagManager.rotationLevel = actualRotationLevel;
                 bagManager.setBagAtributes();
-                MoneyManager.Pay(priceRotation);
+                MoneyManager.GrowMultiply(actualRotationLevel);
                 Debug.Log("Comprou Rotation upgrade, nivel atual: " + actualRotationLevel);
             }
             else

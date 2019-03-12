@@ -164,7 +164,7 @@ GameObject:
   m_Layer: 0
   m_Name: BagButtonManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -183,15 +183,40 @@ MonoBehaviour:
   bagLevelbutton: {fileID: 1627871904}
   startBagLevel: 0
   actualBagLevel: 0
+  bagValues:
+  - 2000
+  - 50000
+  - 1000000
+  - 10000000
+  - 500000000
+  - 100000000000
   moneyLevelbutton: {fileID: 709902849}
   startMoneyLevel: 0
   actualMoneyLevel: 0
+  moneyValues:
+  - 500
+  - 75000
+  - 50000000
+  - 2500000000
+  - 25000000000
   moneyQuantitybutton: {fileID: 1078304925}
   startMoneyQuantityLevel: 0
   actualMoneyQuantityLevel: 0
+  moneyQuantityValues:
+  - 5000
+  - 150000
+  - 2500000
+  - 1000000000
+  - 10000000000
   rotationLevelbutton: {fileID: 1445059232}
   startRotationLevel: 0
   actualRotationLevel: 0
+  rotationValues:
+  - 10000
+  - 500000
+  - 100000000
+  - 5000000000
+  - 50000000000
   bagManager: {fileID: 379566707}
 --- !u!4 &119687083
 Transform:
@@ -201,7 +226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119687081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4, y: 3.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -669,7 +694,7 @@ GameObject:
   m_Layer: 0
   m_Name: BagSpawnPosition
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1322,7 +1347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.05680591}
   m_AnchorMax: {x: 0.21781377, y: 0.11587766}
-  m_AnchoredPosition: {x: -306.6383, y: -861.28674}
+  m_AnchoredPosition: {x: -306.6383, y: -861.286}
   m_SizeDelta: {x: 180.34091, y: 165.50539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &709902849
@@ -3024,7 +3049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.29134178}
   m_AnchorMax: {x: 0.21069634, y: 0.34821942}
-  m_AnchoredPosition: {x: -505.46964, y: -884.604}
+  m_AnchoredPosition: {x: -505.46964, y: -884.60474}
   m_SizeDelta: {x: 181.03922, y: 165.7906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445059232
@@ -3417,7 +3442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Item3
-  initialCost: 20000
+  initialCost: 100000
   initialRevenue: 1000
   coefficient: 1.055
   productionMultiplicator: 1
@@ -3696,8 +3721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Item4
-  initialCost: 100000
-  initialRevenue: 5000
+  initialCost: 10000000
+  initialRevenue: 50000
   coefficient: 1.055
   productionMultiplicator: 1
   actualRevenue: 0
