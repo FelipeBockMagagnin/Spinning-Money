@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    public Text moneyTxt;
-
     public float lastX;
     public float lastY;
     public float lastZ;
@@ -27,7 +25,6 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moneyTxt = GameObject.Find("MoneyTxt").GetComponent<Text>(); 
         lastX = 0;
         lastY = 0;
         lastZ = 0;
@@ -71,10 +68,10 @@ public class InputManager : MonoBehaviour
         lastZ = thisZ;
 
 
-        MoneyManager.money += (x + y + z);
+        MoneyManager.money += ((x + y + z) * MoneyManager.moneyMultiply)/10;
 
 
-        moneyTxt.text = "Money: " + MoneyManager.money.ToString("0.00");
+        
 
 
         transform.Rotate(0, 0, z * rotationMult);

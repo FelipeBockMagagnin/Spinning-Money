@@ -6,6 +6,17 @@ public static class MoneyManager
 {
     public static double money;
     public static double moneyMultiply;
+    public static double mpsMultiply;
+
+    public static void GrowMpsMultiply(double value)
+    {
+        mpsMultiply += value;
+    }
+
+    public static void GrowMultiply(double value)
+    {
+        moneyMultiply += value;
+    }
 
     public static void Pay(double value)
     {

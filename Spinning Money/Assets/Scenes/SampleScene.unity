@@ -151,6 +151,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &119687081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 119687083}
+  - component: {fileID: 119687082}
+  m_Layer: 0
+  m_Name: BagButtonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &119687082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119687081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be45edfd99fd6b3449a44c2c81c96e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bagLevelbutton: {fileID: 1627871904}
+  startBagLevel: 0
+  actualBagLevel: 0
+  moneyLevelbutton: {fileID: 709902849}
+  startMoneyLevel: 0
+  actualMoneyLevel: 0
+  moneyQuantitybutton: {fileID: 1078304925}
+  startMoneyQuantityLevel: 0
+  actualMoneyQuantityLevel: 0
+  rotationLevelbutton: {fileID: 1445059232}
+  startRotationLevel: 0
+  actualRotationLevel: 0
+  bagManager: {fileID: 379566707}
+--- !u!4 &119687083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119687081}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190576845
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1849.4, y: -449.79996}
+  m_AnchoredPosition: {x: 1849.4, y: -449.79993}
   m_SizeDelta: {x: -299.2, y: -899.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294897940
@@ -531,18 +587,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {fileID: 490308663}
+  bagLevel: 0
+  moneyLevel: 0
+  moneyQuantityLevel: 0
+  rotationLevel: 0
   money_1: {fileID: 2100000, guid: 242fcbc68209df84aa83a2974a140d5f, type: 2}
-  money_2: {fileID: 0}
-  money_3: {fileID: 0}
-  money_4: {fileID: 0}
-  money_5: {fileID: 0}
+  money_2: {fileID: 2100000, guid: 2e2303da39469fb4d8a617bbd14c3c17, type: 2}
+  money_3: {fileID: 2100000, guid: 250af26c0cb9bec42955bd2cf652bda6, type: 2}
+  money_4: {fileID: 2100000, guid: e0d57b3e35b63434fbd32d7ae2e80f97, type: 2}
+  money_5: {fileID: 2100000, guid: 4bd02c635fd7e2947b1633ccc2bfd5ba, type: 2}
   bag_1: {fileID: 7958574011524422173, guid: ac598b245423b1a4290c4eee87c8fe16, type: 3}
-  bag_2: {fileID: 0}
-  bag_3: {fileID: 0}
-  bag_4: {fileID: 0}
-  bag_5: {fileID: 0}
-  bag_6: {fileID: 0}
-  inputManager: {fileID: 1380661077}
+  bag_2: {fileID: 4314561278507434843, guid: 30bf70d24311ac14f95d86401eb7778a, type: 3}
+  bag_3: {fileID: 7773554921300338818, guid: 4145e0d236f334a40b133445dcef312e, type: 3}
+  bag_4: {fileID: 8620732941377801080, guid: 28985564dd557ea47a7e40d5b07ac4fa, type: 3}
+  bag_5: {fileID: 4888515411801522203, guid: f2dd427ce82d610478d713e23c2fc9c9, type: 3}
+  bag_6: {fileID: 2109598443761693521, guid: 0dce0ae842bfe3f43bbf5769bc65c807, type: 3}
+  inputManager: {fileID: 0}
   actualBag: {fileID: 0}
 --- !u!4 &379566708
 Transform:
@@ -556,7 +616,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &388122283
 GameObject:
@@ -625,7 +685,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &499291202
 GameObject:
@@ -681,7 +741,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -987,7 +1047,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &629995629
 GameObject:
@@ -1262,7 +1322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.05680591}
   m_AnchorMax: {x: 0.21781377, y: 0.11587766}
-  m_AnchoredPosition: {x: -306.6383, y: -861.2889}
+  m_AnchoredPosition: {x: -306.6383, y: -861.2877}
   m_SizeDelta: {x: 180.34091, y: 165.50539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &709902849
@@ -1305,15 +1365,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 499291203}
-        m_MethodName: Buy
+      - m_Target: {fileID: 119687082}
+        m_MethodName: BuyButton
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Item 1
+          m_StringArgument: money upgrade
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1532,7 +1592,7 @@ RectTransform:
   - {fileID: 294897939}
   - {fileID: 658178945}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2038,9 +2098,10 @@ MonoBehaviour:
   FirstBuy: 0
   name: Item1
   initialCost: 10
-  initialRevenue: 10
-  coefficient: 1.07
+  initialRevenue: 2
+  coefficient: 1.04
   productionMultiplicator: 1
+  numberOfItems: 0
   buttonTxt: {fileID: 754120508}
   moneyPerSecondTxT: {fileID: 1911910079}
 --- !u!1 &984525338
@@ -2201,15 +2262,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 499291203}
-        m_MethodName: Buy
+      - m_Target: {fileID: 119687082}
+        m_MethodName: BuyButton
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Item 4
+          m_StringArgument: money quantity upgrade
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2799,18 +2860,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333003834}
   m_CullTransparentMesh: 0
---- !u!114 &1380661077 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7958574011524422172, guid: ac598b245423b1a4290c4eee87c8fe16,
-    type: 3}
-  m_PrefabInstance: {fileID: 1942005159}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a065c271f7299e345b876345d8934bb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1426197750
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,7 +2975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.29134178}
   m_AnchorMax: {x: 0.21069634, y: 0.34821942}
-  m_AnchoredPosition: {x: -505.46964, y: -884.60187}
+  m_AnchoredPosition: {x: -505.46964, y: -884.603}
   m_SizeDelta: {x: 181.03922, y: 165.7906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445059232
@@ -2969,15 +3018,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 499291203}
-        m_MethodName: Buy
+      - m_Target: {fileID: 119687082}
+        m_MethodName: BuyButton
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Item 3
+          m_StringArgument: rotation upgrade
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -3373,15 +3422,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 499291203}
-        m_MethodName: Buy
+      - m_Target: {fileID: 119687082}
+        m_MethodName: BuyButton
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Item 2
+          m_StringArgument: bag upgrade
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -4247,80 +4296,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940829282}
   m_CullTransparentMesh: 0
---- !u!1001 &1942005159
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7958574011524422173, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_Name
-      value: Bolsa_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422172, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: moneyTxt
-      value: 
-      objectReference: {fileID: 697162208}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7958574011524422162, guid: ac598b245423b1a4290c4eee87c8fe16,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ac598b245423b1a4290c4eee87c8fe16, type: 3}
 --- !u!1 &2004267138
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,8 +7,6 @@ using System;
 public class UpgradeManager : MonoBehaviour
 {
 
-    public bool FirstBuy;
-
     public string name;
 
     public double initialCost;
@@ -17,29 +15,28 @@ public class UpgradeManager : MonoBehaviour
     public double productionMultiplicator;
 
     double actualCost;
-    double actualRevenue;
+    public double actualRevenue;
     double actualProductivity;
 
-    int numberOfItems;
+    public int numberOfItems;
 
     public Text buttonTxt;
-    public Text moneyPerSecondTxT;
 
 
     private void Start()
     {
+        MoneyManager.mpsMultiply = 1;
+        MoneyManager.moneyMultiply = 1;
         actualCost = initialCost;
         actualRevenue = initialRevenue;
         print("Started revenue: " + initialRevenue);
-        if(FirstBuy == false)
-        {
-            StartCoroutine(Production());
-        }
+        actualRevenue = (initialRevenue * numberOfItems) * productionMultiplicator;
+        StartCoroutine(Production());
     }
 
     IEnumerator Production()
     {
-        MoneyManager.Give(actualRevenue);
+        MoneyManager.Give(actualRevenue*MoneyManager.mpsMultiply);
         yield return new WaitForSeconds(1f);
         StartCoroutine(Production());
     }
@@ -48,11 +45,6 @@ public class UpgradeManager : MonoBehaviour
     {
         if(MoneyManager.money >= actualCost)
         {   
-            if(FirstBuy)
-            {
-                FirstBuy = false;
-                StartCoroutine(Production());
-            }
             MoneyManager.Pay(actualCost);
             numberOfItems++;
             print("Numero de itens: " + numberOfItems);
@@ -67,18 +59,22 @@ public class UpgradeManager : MonoBehaviour
 
     private void Update()
     {
-        buttonTxt.text = actualCost.ToString("0.00");
-        moneyPerSecondTxT.text = "Money/s: " + actualRevenue.ToString("0.00");
+        buttonTxt.text = numberOfItems + " - " + name +  ": " + actualCost.ToString("0.0");
     }
 
     public void UpgradeItem()
     {
-        print("Custo do item antes da compra: " + actualCost);
-        print("Revenda do item antes da compra: " + actualRevenue);
+        setMultiply();
         actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), numberOfItems));
-        actualRevenue = (initialRevenue * numberOfItems) * productionMultiplicator;
-        print("Custo do item depois da compra: " + actualCost);
-        print("Revenda do item depois da compra: " + actualRevenue);       
+        actualRevenue = (initialRevenue * numberOfItems) * productionMultiplicator;        
+    }
+
+    void setMultiply()
+    {
+        if(numberOfItems % 10 == 0)
+        {
+            productionMultiplicator *= 2;
+        }
     }
 
 
