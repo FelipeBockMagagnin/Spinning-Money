@@ -68,7 +68,7 @@ public class InputManager : MonoBehaviour
         lastZ = thisZ;
 
 
-        MoneyManager.money += ((x + y + z)/10)*MoneyManager.moneyMultiply;
+        MoneyManager.money += ((x + y + z)/20)*MoneyManager.moneyMultiply;
 
 
         

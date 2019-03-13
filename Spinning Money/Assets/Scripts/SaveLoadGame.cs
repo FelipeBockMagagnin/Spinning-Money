@@ -114,19 +114,17 @@ public class SaveLoadGame : MonoBehaviour
         }
     }
 
-    private void OnApplicationPause(bool pause)
+
+    private void Update()
     {
-        if(pause)
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("Paused");
-            //Save Player Settings
-            Save();
+            PlayerPrefs.DeleteAll();
         }
-        else
-        {
-            Debug.Log("resumed");
-            //Load Player Settings
-            Load();
-        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
     }
 }

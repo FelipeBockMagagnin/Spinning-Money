@@ -24,8 +24,11 @@ public class UpgradeManager : MonoBehaviour
 
     public void StartGame(int _numberOfItems)
     {
-        numberOfItems = _numberOfItems;        
+        numberOfItems = _numberOfItems;
+        //seta de acordo com o numero de items
+        setMultiply();
         actualRevenue = (initialRevenue * _numberOfItems) * productionMultiplicator;
+        Debug.Log(actualCost);
 
         if(numberOfItems == 0)
         {
@@ -33,13 +36,22 @@ public class UpgradeManager : MonoBehaviour
         }
         else
         {
-            actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), numberOfItems));
+            setInitialActualcost();
+            UpgradeItem();
         }
 
-        //seta de acordo com o numero de items
-        setMultiply();
+        Debug.Log(actualCost);
 
         StartCoroutine(Production());
+    }
+
+    void setInitialActualcost()
+    {
+        actualCost = initialCost;
+        for(int x = 0; x < numberOfItems; x++)
+        {
+            actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), numberOfItems));
+        }
     }
 
     IEnumerator Production()
@@ -72,7 +84,7 @@ public class UpgradeManager : MonoBehaviour
     {
         setMultiply();
         actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), numberOfItems));
-        actualRevenue = (initialRevenue * numberOfItems) * productionMultiplicator;        
+        actualRevenue = (initialRevenue * numberOfItems) * productionMultiplicator;
     }
 
     void setMultiply()
@@ -80,6 +92,11 @@ public class UpgradeManager : MonoBehaviour
         if(numberOfItems % 5 == 0)
         {            
             this.productionMultiplicator *= (numberOfItems/5)*2;
+        }
+
+        if(numberOfItems == 0)
+        {
+            this.productionMultiplicator = 1;
         }
     }
 

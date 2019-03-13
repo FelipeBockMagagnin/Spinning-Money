@@ -2122,8 +2122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Item1
   initialCost: 10
-  initialRevenue: 0.3
-  coefficient: 1.055
+  initialRevenue: 0.1
+  coefficient: 1.05
   productionMultiplicator: 1
   actualRevenue: 0
   numberOfItems: 0
@@ -3491,8 +3491,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Item3
   initialCost: 100000
-  initialRevenue: 650
-  coefficient: 1.055
+  initialRevenue: 250
+  coefficient: 1.05
   productionMultiplicator: 1
   actualRevenue: 0
   numberOfItems: 0
@@ -3770,7 +3770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Item4
   initialCost: 10000000
-  initialRevenue: 50000
+  initialRevenue: 25000
   coefficient: 1.055
   productionMultiplicator: 1
   actualRevenue: 0
@@ -4508,8 +4508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Item2
   initialCost: 1000
-  initialRevenue: 5
-  coefficient: 1.055
+  initialRevenue: 2
+  coefficient: 1.05
   productionMultiplicator: 1
   actualRevenue: 0
   numberOfItems: 0
