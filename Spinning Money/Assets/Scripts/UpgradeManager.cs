@@ -7,7 +7,7 @@ using System;
 public class UpgradeManager : MonoBehaviour
 {
 
-    public string name;
+    public string _name;
 
     public double initialCost;
     public double initialRevenue;
@@ -22,21 +22,29 @@ public class UpgradeManager : MonoBehaviour
 
     public Text buttonTxt;
 
-
-    private void Start()
+    public void StartGame(int _numberOfItems)
     {
-        MoneyManager.mpsMultiply = 1;
-        MoneyManager.moneyMultiply = 1;
-        actualCost = initialCost;
-        actualRevenue = initialRevenue;
-        print("Started revenue: " + initialRevenue);
-        actualRevenue = (initialRevenue * numberOfItems) * productionMultiplicator;
+        numberOfItems = _numberOfItems;        
+        actualRevenue = (initialRevenue * _numberOfItems) * productionMultiplicator;
+
+        if(numberOfItems == 0)
+        {
+            actualCost = initialCost;
+        }
+        else
+        {
+            actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), numberOfItems));
+        }
+
+        //seta de acordo com o numero de items
+        setMultiply();
+
         StartCoroutine(Production());
     }
 
     IEnumerator Production()
     {
-        MoneyManager.Give(actualRevenue*MoneyManager.mpsMultiply);
+        MoneyManager.Give(actualRevenue);
         yield return new WaitForSeconds(1f);
         StartCoroutine(Production());
     }
@@ -47,8 +55,6 @@ public class UpgradeManager : MonoBehaviour
         {   
             MoneyManager.Pay(actualCost);
             numberOfItems++;
-            print("Numero de itens: " + numberOfItems);
-            print("Item:  " + name + " comprado");
             UpgradeItem();
         }
         else

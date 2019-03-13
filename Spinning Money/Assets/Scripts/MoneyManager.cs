@@ -5,12 +5,16 @@ using UnityEngine;
 public static class MoneyManager
 {
     public static double money;
+    public static double totalMoney;
     public static double moneyMultiply;
-    public static double mpsMultiply;
 
-    public static void GrowMpsMultiply(double value)
+
+
+    public static void StartGame(double _money, double _totalMoney, double _moneyMultiply)
     {
-        mpsMultiply += value;
+        money = _money;
+        totalMoney = _totalMoney;
+        moneyMultiply = _moneyMultiply;
     }
 
     public static void GrowMultiply(double value)
@@ -31,6 +35,7 @@ public static class MoneyManager
     public static void Give(double value)
     {
         money += value;
+        totalMoney += value;
     }
 
 

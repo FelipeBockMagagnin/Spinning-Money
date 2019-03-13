@@ -40,37 +40,19 @@ public class BagButtonManager : MonoBehaviour
     public BagManager bagManager;
 
 
-    private void Start()
+    public void StartGame(int _baglevel, int _moneylevel, int _moneyQuantitylevel, int _rotationlevel)
     {
-        LoadLevels();
-        StartComponents();
+        actualBagLevel = _baglevel;
+        actualMoneyLevel = _moneylevel;
+        actualMoneyQuantityLevel = _moneyQuantitylevel;
+        actualRotationLevel = _rotationlevel;
+
+        bagManager.SetLevels(_baglevel, _moneylevel, _moneyQuantitylevel, _rotationlevel);
+
         bagManager.setBagAtributes();
+
         SetTextButtons();
     }
-
-    void StartComponents()
-    {
-        actualBagLevel = startBagLevel;
-        bagManager.bagLevel = startBagLevel;
-
-        actualMoneyLevel = startMoneyLevel;
-        bagManager.moneyLevel = startMoneyLevel;
-
-        actualMoneyQuantityLevel = startMoneyQuantityLevel;
-        bagManager.moneyQuantityLevel = startMoneyQuantityLevel;
-
-        actualRotationLevel = startRotationLevel;
-        bagManager.rotationLevel = startRotationLevel;
-    }
-
-    void LoadLevels()
-    {
-        startBagLevel = 1;
-        startMoneyLevel = 1;
-        startMoneyQuantityLevel = 1;
-        startRotationLevel = 1;
-    }
-
 
 
     void SetTextButtons()

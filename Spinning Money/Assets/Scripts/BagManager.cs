@@ -18,15 +18,16 @@ public class BagManager : MonoBehaviour
 
 
     float rotationMult;
-    float numberOfMoney;
 
     //checa os niveis para startar os objetos
-    void SetLevels(int _bagLevel, int _moneyLevel, int _moneyQuantityLevel, int _rotationLevel)
+    public void SetLevels(int _bagLevel, int _moneyLevel, int _moneyQuantityLevel, int _rotationLevel)
     {
         bagLevel = _bagLevel;
         moneyLevel = _moneyLevel;
         moneyQuantityLevel = _moneyQuantityLevel;
         rotationLevel = _rotationLevel;
+
+        setBagAtributes();
     }
 
     public void setBagAtributes()
