@@ -52,7 +52,8 @@ public class BagManager : MonoBehaviour
 
     void ChangeMoneySpawnRate(int _moneySpawnRate)
     {
-
+        ParticleSystem.EmissionModule particle = actualBag.GetComponent<ParticleSystem>().emission;
+        particle.rateOverTime = Mathf.Pow(2,_moneySpawnRate+1);
     }
 
     void changeMoney(int _moneyLevel)

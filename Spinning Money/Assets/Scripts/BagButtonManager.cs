@@ -45,6 +45,7 @@ public class BagButtonManager : MonoBehaviour
         LoadLevels();
         StartComponents();
         bagManager.setBagAtributes();
+        SetTextButtons();
     }
 
     void StartComponents()
@@ -70,22 +71,52 @@ public class BagButtonManager : MonoBehaviour
         startRotationLevel = 1;
     }
 
-    private void FixedUpdate()
-    {
-        SetTextButtons();
-    }
+
 
     void SetTextButtons()
     {
-        bagLevelbutton.GetComponentInChildren<Text>().text = "Bag Up - Lvl " + actualBagLevel.ToString() + " cost: " + bagValues[actualBagLevel - 1];
-        moneyLevelbutton.GetComponentInChildren<Text>().text = "Money Upgrade - Lvl " + actualMoneyLevel.ToString() + " cost: " + moneyValues[actualMoneyLevel - 1];
-        moneyQuantitybutton.GetComponentInChildren<Text>().text = "Money Quantity Upgrade - Lvl " + actualMoneyQuantityLevel.ToString() + " cost: " + moneyQuantityValues[actualMoneyQuantityLevel - 1];
-        rotationLevelbutton.GetComponentInChildren<Text>().text = "Rotation Upgrade - Lvl " + actualRotationLevel.ToString() + " cost: " + rotationValues[actualRotationLevel - 1];
+        if(actualBagLevel == 6)
+        {
+            bagLevelbutton.GetComponentInChildren<Text>().text = "Max Lvl";
+        }
+        else
+        {
+            bagLevelbutton.GetComponentInChildren<Text>().text = "Bag Up - Lvl " + actualBagLevel.ToString() + " cost: " + bagValues[actualBagLevel - 1];
+        }
+
+
+        if (actualMoneyLevel == 5)
+        {
+            moneyLevelbutton.GetComponentInChildren<Text>().text = "Max Lvl";
+        }
+        else
+        {
+            moneyLevelbutton.GetComponentInChildren<Text>().text = "Money Upgrade - Lvl " + actualMoneyLevel.ToString() + " cost: " + moneyValues[actualMoneyLevel - 1];
+        }
+
+        if (actualMoneyQuantityLevel == 5)
+        {
+            moneyQuantitybutton.GetComponentInChildren<Text>().text = "Max Lvl";
+        }
+        else
+        {
+            moneyQuantitybutton.GetComponentInChildren<Text>().text = "Money Quantity Upgrade - Lvl " + actualMoneyQuantityLevel.ToString() + " cost: " + moneyQuantityValues[actualMoneyQuantityLevel - 1];
+        }
+
+
+        if (actualRotationLevel == 5)
+        {
+            rotationLevelbutton.GetComponentInChildren<Text>().text = "Max Lvl";
+        }
+        else
+        {
+            rotationLevelbutton.GetComponentInChildren<Text>().text = "Rotation Upgrade - Lvl " + actualRotationLevel.ToString() + " cost: " + rotationValues[actualRotationLevel - 1];
+        }        
     }
 
     public void BuyButton(string name)
     {
-        if(name == "bag upgrade")
+        if (name == "bag upgrade")
         {
             if(MoneyManager.money >= bagValues[actualBagLevel - 1] && actualBagLevel < 6)
             {
@@ -149,10 +180,7 @@ public class BagButtonManager : MonoBehaviour
                 Debug.Log("Não há dinheiro para a compra ou nivel max alcançado");
             }
         }
-
-
-
-
+        SetTextButtons();
     }
 
 

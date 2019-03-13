@@ -15,7 +15,11 @@ public static class MoneyManager
 
     public static void GrowMultiply(double value)
     {
-        moneyMultiply *= 2;
+        if(value > 3)
+        {
+            value = 3;
+        }
+        moneyMultiply *= value;
         Debug.Log("money multiply: " + moneyMultiply);
     }
 

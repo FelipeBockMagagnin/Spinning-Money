@@ -185,8 +185,8 @@ MonoBehaviour:
   actualBagLevel: 0
   bagValues:
   - 2000
-  - 50000
-  - 1000000
+  - 75000
+  - 2500000
   - 10000000
   - 500000000
   - 100000000000
@@ -195,7 +195,7 @@ MonoBehaviour:
   actualMoneyLevel: 0
   moneyValues:
   - 500
-  - 75000
+  - 125000
   - 50000000
   - 2500000000
   - 25000000000
@@ -204,8 +204,8 @@ MonoBehaviour:
   actualMoneyQuantityLevel: 0
   moneyQuantityValues:
   - 5000
-  - 150000
-  - 2500000
+  - 250000
+  - 5000000
   - 1000000000
   - 10000000000
   rotationLevelbutton: {fileID: 1445059232}
@@ -213,7 +213,7 @@ MonoBehaviour:
   actualRotationLevel: 0
   rotationValues:
   - 10000
-  - 500000
+  - 750000
   - 100000000
   - 5000000000
   - 50000000000
@@ -1347,7 +1347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.05680591}
   m_AnchorMax: {x: 0.21781377, y: 0.11587766}
-  m_AnchoredPosition: {x: -306.6383, y: -861.286}
+  m_AnchoredPosition: {x: -306.6383, y: -861.2852}
   m_SizeDelta: {x: 180.34091, y: 165.50539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &709902849
@@ -2122,7 +2122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Item1
   initialCost: 10
-  initialRevenue: 0.5
+  initialRevenue: 0.3
   coefficient: 1.055
   productionMultiplicator: 1
   actualRevenue: 0
@@ -3049,7 +3049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.29134178}
   m_AnchorMax: {x: 0.21069634, y: 0.34821942}
-  m_AnchoredPosition: {x: -505.46964, y: -884.60474}
+  m_AnchoredPosition: {x: -505.46964, y: -884.6055}
   m_SizeDelta: {x: 181.03922, y: 165.7906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445059232
@@ -3443,7 +3443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Item3
   initialCost: 100000
-  initialRevenue: 1000
+  initialRevenue: 650
   coefficient: 1.055
   productionMultiplicator: 1
   actualRevenue: 0
@@ -4460,7 +4460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Item2
   initialCost: 1000
-  initialRevenue: 10
+  initialRevenue: 5
   coefficient: 1.055
   productionMultiplicator: 1
   actualRevenue: 0
