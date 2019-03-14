@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class BagButtonManager : MonoBehaviour
 {
     [Header("Bag Level")]
-    public Button bagLevelbutton;
+    public Text bagPricetxt;
+    public Text baglevelTxt;
     [HideInInspector]
     public int startBagLevel;
     [HideInInspector]
@@ -14,7 +15,8 @@ public class BagButtonManager : MonoBehaviour
     public double[] bagValues;
 
     [Header("Money Level")]
-    public Button moneyLevelbutton;
+    public Text moneyPricetxt;
+    public Text moneylevelTxt;
     [HideInInspector]
     public int startMoneyLevel;
     [HideInInspector]
@@ -22,7 +24,8 @@ public class BagButtonManager : MonoBehaviour
     public double[] moneyValues;
 
     [Header("Money Quantity Level")]
-    public Button moneyQuantitybutton;
+    public Text moneyQuantityPricetxt;
+    public Text moneyQuantityleveltxt;
     [HideInInspector]
     public int startMoneyQuantityLevel;
     [HideInInspector]
@@ -30,7 +33,8 @@ public class BagButtonManager : MonoBehaviour
     public double[] moneyQuantityValues;
 
     [Header("Rotation Level")]
-    public Button rotationLevelbutton;
+    public Text rotationPricetxt;
+    public Text rotationlevelTxt;
     [HideInInspector]
     public int startRotationLevel;
     [HideInInspector]
@@ -59,40 +63,48 @@ public class BagButtonManager : MonoBehaviour
     {
         if(actualBagLevel == 6)
         {
-            bagLevelbutton.GetComponentInChildren<Text>().text = "Max Lvl";
+            bagPricetxt.text = "Max Lvl";
+            baglevelTxt.text = actualBagLevel.ToString();
         }
         else
         {
-            bagLevelbutton.GetComponentInChildren<Text>().text = "Bag Up - Lvl " + actualBagLevel.ToString() + " cost: " + bagValues[actualBagLevel - 1];
+            bagPricetxt.text = bagValues[actualBagLevel - 1].ToString();
+            baglevelTxt.text = actualBagLevel.ToString();
         }
 
 
         if (actualMoneyLevel == 5)
         {
-            moneyLevelbutton.GetComponentInChildren<Text>().text = "Max Lvl";
+            moneyPricetxt.text = "Max Lvl";
+            moneylevelTxt.text = actualMoneyLevel.ToString();
         }
         else
         {
-            moneyLevelbutton.GetComponentInChildren<Text>().text = "Money Upgrade - Lvl " + actualMoneyLevel.ToString() + " cost: " + moneyValues[actualMoneyLevel - 1];
+            moneyPricetxt.text = moneyValues[actualMoneyLevel - 1].ToString();
+            moneylevelTxt.text = actualMoneyLevel.ToString();
         }
 
         if (actualMoneyQuantityLevel == 5)
         {
-            moneyQuantitybutton.GetComponentInChildren<Text>().text = "Max Lvl";
+            moneyQuantityleveltxt.text = actualMoneyQuantityLevel.ToString();
+            moneyQuantityPricetxt.text = "Max Lvl";
         }
         else
         {
-            moneyQuantitybutton.GetComponentInChildren<Text>().text = "Money Quantity Upgrade - Lvl " + actualMoneyQuantityLevel.ToString() + " cost: " + moneyQuantityValues[actualMoneyQuantityLevel - 1];
+            moneyQuantityPricetxt.text = moneyQuantityValues[actualMoneyQuantityLevel - 1].ToString();
+            moneyQuantityleveltxt.text = actualMoneyQuantityLevel.ToString();
         }
 
 
         if (actualRotationLevel == 5)
         {
-            rotationLevelbutton.GetComponentInChildren<Text>().text = "Max Lvl";
+            rotationPricetxt.text = "Max Lvl";
+            rotationlevelTxt.text = actualRotationLevel.ToString();
         }
         else
         {
-            rotationLevelbutton.GetComponentInChildren<Text>().text = "Rotation Upgrade - Lvl " + actualRotationLevel.ToString() + " cost: " + rotationValues[actualRotationLevel - 1];
+            rotationPricetxt.text = rotationValues[actualRotationLevel - 1].ToString();
+            rotationlevelTxt.text = actualRotationLevel.ToString();
         }        
     }
 

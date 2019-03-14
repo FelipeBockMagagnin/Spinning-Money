@@ -123,6 +123,18 @@ public class SaveLoadGame : MonoBehaviour
         }
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        if(pause)
+        {
+            Save();
+        }
+        else
+        {
+            Load();
+        }
+    }
+
     private void OnApplicationQuit()
     {
         Save();

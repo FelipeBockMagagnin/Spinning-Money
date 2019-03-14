@@ -21,6 +21,7 @@ public class UpgradeManager : MonoBehaviour
     public int numberOfItems;
 
     public Text buttonTxt;
+    public Text numberOfItemsTxt;
 
     public void StartGame(int _numberOfItems)
     {
@@ -77,7 +78,8 @@ public class UpgradeManager : MonoBehaviour
 
     private void Update()
     {
-        buttonTxt.text = numberOfItems + " - " + name +  ": " + actualCost.ToString("0.0");
+        buttonTxt.text = actualCost.ToString("0.0");
+        numberOfItemsTxt.text = numberOfItems.ToString();
     }
 
     public void UpgradeItem()
