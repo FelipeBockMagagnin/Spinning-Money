@@ -23,13 +23,17 @@ public class UpgradeManager : MonoBehaviour
     public Text buttonTxt;
     public Text numberOfItemsTxt;
 
+    private void Start()
+    {
+        StartCoroutine(Production());
+    }
+
     public void StartGame(int _numberOfItems)
     {
         numberOfItems = _numberOfItems;
         //seta de acordo com o numero de items
         setMultiply();
         actualRevenue = (initialRevenue * _numberOfItems) * productionMultiplicator;
-        Debug.Log(actualCost);
 
         if(numberOfItems == 0)
         {
@@ -41,17 +45,15 @@ public class UpgradeManager : MonoBehaviour
             UpgradeItem();
         }
 
-        Debug.Log(actualCost);
-
-        StartCoroutine(Production());
+        
     }
 
     void setInitialActualcost()
     {
         actualCost = initialCost;
-        for(int x = 0; x < numberOfItems; x++)
+        for(int x = 1; x < numberOfItems; x++)
         {
-            actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), numberOfItems));
+            actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), x));
         }
     }
 

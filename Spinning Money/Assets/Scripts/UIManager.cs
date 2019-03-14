@@ -8,10 +8,6 @@ public class UIManager : MonoBehaviour
     public Text moneyTxt;
     public Text mpsTxt;
 
-
-
-
-
     public Text StatsMoney;
     public Text StatsTotalMoney;
     public Text StatsMoneyMultipliply;

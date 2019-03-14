@@ -97,6 +97,7 @@ public class SaveLoadGame : MonoBehaviour
             bagButtonManager.StartGame(1, 1, 1, 1);
         }
 
+        
 
         if(PlayerPrefs.HasKey("Item1"))
         {
@@ -112,15 +113,7 @@ public class SaveLoadGame : MonoBehaviour
             Item3.StartGame(0);
             Item4.StartGame(0);
         }
-    }
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            PlayerPrefs.DeleteAll();
-        }
+        
     }
 
     private void OnApplicationPause(bool pause)
