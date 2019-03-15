@@ -30,6 +30,10 @@ public class SaveLoadGame : MonoBehaviour
 
 
 
+    public OfflineTime offlineTime;
+
+
+
     private void Start()
     {
         Load();
@@ -38,6 +42,9 @@ public class SaveLoadGame : MonoBehaviour
 
     public void Save()
     {
+        offlineTime.SaveLastShutdownTime();
+
+
         //MONEY MANAGER
         PlayerPrefs.SetString("Money", MoneyManager.money.ToString());
         PlayerPrefs.SetString("TotalMoney", MoneyManager.totalMoney.ToString());
@@ -113,7 +120,12 @@ public class SaveLoadGame : MonoBehaviour
             Item3.StartGame(0);
             Item4.StartGame(0);
         }
-        
+
+
+
+
+        offlineTime.OnGameStartup();
+
     }
 
     private void OnApplicationPause(bool pause)
@@ -124,7 +136,7 @@ public class SaveLoadGame : MonoBehaviour
         }
         else
         {
-            Load();
+            
         }
     }
 

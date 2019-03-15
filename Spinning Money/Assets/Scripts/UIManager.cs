@@ -12,19 +12,25 @@ public class UIManager : MonoBehaviour
     public Text StatsTotalMoney;
     public Text StatsMoneyMultipliply;
 
+
+    public double mps = 0;
+
     public UpgradeManager[] upgrades;
 
     private void FixedUpdate()
     {
         moneyTxt.text = MoneyManager.money.ToString("0.0");
-        double mps = 0;
+
+        double _mps = 0;
 
         foreach (UpgradeManager up in upgrades)
         {
-            mps += up.actualRevenue;
+            _mps += up.actualRevenue;
         }
 
-        mpsTxt.text = "/s " + mps.ToString("0.0");
+        mpsTxt.text = "/s " + _mps.ToString("0.0");
+
+        mps = _mps;
 
         ShowStats();
 

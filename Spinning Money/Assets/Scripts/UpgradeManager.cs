@@ -32,7 +32,9 @@ public class UpgradeManager : MonoBehaviour
     {
         numberOfItems = _numberOfItems;
         //seta de acordo com o numero de items
-        setMultiply();
+        setInitialMultiplycator();
+        print("number of items: " + _numberOfItems);
+        print("productionMultiplicator" + productionMultiplicator);
         actualRevenue = (initialRevenue * _numberOfItems) * productionMultiplicator;
 
         if(numberOfItems == 0)
@@ -89,15 +91,35 @@ public class UpgradeManager : MonoBehaviour
         setMultiply();
         actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), numberOfItems));
         actualRevenue = (initialRevenue * numberOfItems) * productionMultiplicator;
+        
+    }
+
+    void setInitialMultiplycator()
+    {
+        int times = numberOfItems / 5;
+        print("Times: " + times);
+        if(times == 0)
+        {
+            this.productionMultiplicator = 1;
+        }
+        else
+        {
+            this.productionMultiplicator = 1;
+            for (int i = 1; i <= times; i++)
+            {
+                this.productionMultiplicator *= i * 2;
+                
+            }
+        }
     }
 
     void setMultiply()
     {
-        if(numberOfItems % 5 == 0)
+        if (numberOfItems % 5 == 0)
         {            
             this.productionMultiplicator *= (numberOfItems/5)*2;
         }
-
+        
         if(numberOfItems == 0)
         {
             this.productionMultiplicator = 1;
