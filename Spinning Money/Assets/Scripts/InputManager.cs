@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
         z = Mathf.Abs(Mathf.Abs(Input.acceleration.z) - Mathf.Abs(lastZ));
 
 
-        if(x <= 0.1)
+        if (x <= 0.1)
         {
             x = 0;
         }
@@ -68,12 +68,69 @@ public class InputManager : MonoBehaviour
         lastZ = thisZ;
 
 
-        MoneyManager.money += ((x + y + z)/5)*MoneyManager.moneyMultiply;
+        MoneyManager.money += ((x + y + z) / 5) * MoneyManager.moneyMultiply;
 
 
-        
+        CountTimeWithoutStopShaking();
 
 
         transform.Rotate(0, 0, z * rotationMult);
+    }
+
+
+    public float timewithoutshaking = 0;
+
+    void CountTimeWithoutStopShaking()
+    {
+        if(x > 0 || y > 0 || z > 0)
+        {
+
+            timewithoutshaking = 0.5f;
+        }
+        else
+        {
+            timewithoutshaking -= Time.deltaTime;
+        }
+
+        if(timewithoutshaking > 0)
+        {
+            shakeOn = true;
+        }
+        else
+        {
+            shakeOn = false;
+        }
+
+    }
+
+
+
+        // vars
+    private bool shakeOn = false;
+    private float shakePower = 0.3f;
+
+    // sprite original position
+    private Vector3 originPosition= new Vector3(0,0.33f,0);
+    private Vector3 normalPosition = new Vector3(0,0.33f,0);
+
+    // Update is called once per frame
+    void Update()
+    {
+        // if shake is enabled
+        if (shakeOn)
+        {
+            // reset original position
+            transform.position = originPosition;
+
+            // generate random position in a 1 unit circle and add power
+            Vector2 ShakePos = Random.insideUnitCircle * shakePower;
+
+            // transform to new position adding the new coordinates
+            transform.position = new Vector3(transform.position.x + ShakePos.x, transform.position.y + ShakePos.y, transform.position.z);
+        }
+        else
+        {
+            transform.position = normalPosition;
+        }
     }
 }

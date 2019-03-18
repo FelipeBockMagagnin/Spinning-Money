@@ -33,6 +33,9 @@ public class SaveLoadGame : MonoBehaviour
     public OfflineTime offlineTime;
 
 
+    public MusicSoundManager musicSoundManager;
+
+
 
     private void Start()
     {
@@ -61,6 +64,16 @@ public class SaveLoadGame : MonoBehaviour
         PlayerPrefs.SetInt("Item2", Item2.numberOfItems);
         PlayerPrefs.SetInt("Item3", Item3.numberOfItems);
         PlayerPrefs.SetInt("Item4", Item4.numberOfItems);
+
+        if(musicSoundManager.PlaySounds == true)
+        {
+            PlayerPrefs.SetInt("Audio", 1);
+        } 
+        else
+        {
+            PlayerPrefs.SetInt("Audio", 0);
+        }
+        
     }
 
 
@@ -121,10 +134,13 @@ public class SaveLoadGame : MonoBehaviour
             Item4.StartGame(0);
         }
 
-
-
-
         offlineTime.OnGameStartup();
+
+        if(PlayerPrefs.HasKey("Audio"))
+        {
+            musicSoundManager.StartGame(PlayerPrefs.GetInt("Audio"));
+        }
+
 
     }
 
