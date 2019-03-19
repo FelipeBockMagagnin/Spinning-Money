@@ -82,10 +82,10 @@ public class InputManager : MonoBehaviour
 
     void CountTimeWithoutStopShaking()
     {
-        if(x > 0 || y > 0 || z > 0)
+        if(x > 0.2 || y > 0.2 || z > 0.2)
         {
 
-            timewithoutshaking = 0.5f;
+            timewithoutshaking = 0.2f;
         }
         else
         {

@@ -22,6 +22,7 @@ public class UpgradeManager : MonoBehaviour
 
     public Text buttonTxt;
     public Text numberOfItemsTxt;
+    public GameObject announceTxt;
 
     private void Start()
     {
@@ -44,16 +45,13 @@ public class UpgradeManager : MonoBehaviour
         else
         {
             setInitialActualcost();
-            UpgradeItem();
-        }
-
-        
+        }        
     }
 
     void setInitialActualcost()
     {
         actualCost = initialCost;
-        for(int x = 1; x < numberOfItems; x++)
+        for(int x = 1; x <= numberOfItems; x++)
         {
             actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), x));
         }
@@ -84,6 +82,15 @@ public class UpgradeManager : MonoBehaviour
     {
         buttonTxt.text = actualCost.ToString("0.0");
         numberOfItemsTxt.text = numberOfItems.ToString();
+        if(MoneyManager.money >= actualCost)
+        {
+            this.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            this.GetComponent<Button>().interactable = false;
+        }
+
     }
 
     public void UpgradeItem()
@@ -91,7 +98,6 @@ public class UpgradeManager : MonoBehaviour
         setMultiply();
         actualCost = actualCost * (Mathf.Pow(Convert.ToSingle(coefficient), numberOfItems));
         actualRevenue = (initialRevenue * numberOfItems) * productionMultiplicator;
-        
     }
 
     void setInitialMultiplycator()
@@ -107,8 +113,7 @@ public class UpgradeManager : MonoBehaviour
             this.productionMultiplicator = 1;
             for (int i = 1; i <= times; i++)
             {
-                this.productionMultiplicator *= i * 2;
-                
+                this.productionMultiplicator *= i * 2;                
             }
         }
     }
@@ -118,6 +123,7 @@ public class UpgradeManager : MonoBehaviour
         if (numberOfItems % 5 == 0)
         {            
             this.productionMultiplicator *= (numberOfItems/5)*2;
+            ShowAnnounce((numberOfItems / 5) * 2);
         }
         
         if(numberOfItems == 0)
@@ -126,7 +132,11 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-
+    void ShowAnnounce(int _productionGrow)
+    {
+        announceTxt.GetComponent<Animator>().SetTrigger("ShowMessage");
+        announceTxt.GetComponentInChildren<Text>().text = _name + " prodution multiplied by " + _productionGrow;
+    }
 
 
 

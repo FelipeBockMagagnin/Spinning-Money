@@ -44,6 +44,11 @@ public class BagButtonManager : MonoBehaviour
     public BagManager bagManager;
 
 
+    public AudioSource cashSound;
+
+
+    public GameObject ParticleSystemEvolution;
+
     public void StartGame(int _baglevel, int _moneylevel, int _moneyQuantitylevel, int _rotationlevel)
     {
         actualBagLevel = _baglevel;
@@ -108,6 +113,16 @@ public class BagButtonManager : MonoBehaviour
         }        
     }
 
+    public void PlayCashSound()
+    {
+        cashSound.Play();
+    }
+
+    public void InstantiateParticleEvolution()
+    {
+        Instantiate(ParticleSystemEvolution, new Vector3(0, 0.33f, 0), Quaternion.identity);
+    }
+
     public void BuyButton(string name)
     {
         if (name == "bag upgrade")
@@ -120,6 +135,8 @@ public class BagButtonManager : MonoBehaviour
                 bagManager.setBagAtributes();                
                 Debug.Log("Comprou bag upgrade, nivel atual: " + actualBagLevel);
                 MoneyManager.GrowMultiply(actualBagLevel);
+                PlayCashSound();
+                InstantiateParticleEvolution();
             }
             else
             {
@@ -136,6 +153,8 @@ public class BagButtonManager : MonoBehaviour
                 bagManager.setBagAtributes();
                 MoneyManager.GrowMultiply(actualMoneyLevel);
                 Debug.Log("Comprou money upgrade, nivel atual: " + actualMoneyLevel);
+                InstantiateParticleEvolution();
+                PlayCashSound();
             } 
             else
             {
@@ -152,6 +171,8 @@ public class BagButtonManager : MonoBehaviour
                 bagManager.setBagAtributes();
                 MoneyManager.GrowMultiply(actualMoneyQuantityLevel);
                 Debug.Log("Comprou money quantity upgrade, nivel atual: " + actualMoneyQuantityLevel);
+                InstantiateParticleEvolution();
+                PlayCashSound();
             }
             else
             {
@@ -168,6 +189,8 @@ public class BagButtonManager : MonoBehaviour
                 bagManager.setBagAtributes();
                 MoneyManager.GrowMultiply(actualRotationLevel);
                 Debug.Log("Comprou Rotation upgrade, nivel atual: " + actualRotationLevel);
+                InstantiateParticleEvolution();
+                PlayCashSound();
             }
             else
             {

@@ -28,13 +28,10 @@ public class OfflineTime : MonoBehaviour
             timePassed = 480;
         }
         TimePassedtxt.text = "TimePassed: " + timePassed + " minutes";
-
-        
         
         earnedCoins = item1.actualRevenue + item2.actualRevenue + item3.actualRevenue + item4.actualRevenue;
-        earnedCoins = timePassed * earnedCoins;
+        earnedCoins = timePassed * earnedCoins * 4;
         EarnedCoinstxt.text = "EarnedCoins: " + earnedCoins;
-
 
         OfflineEarningsPanel.GetComponent<Animator>().SetBool("active", true);
 
@@ -68,6 +65,6 @@ public class OfflineTime : MonoBehaviour
 
     public void SaveLastShutdownTime()
     {        
-        PlayerPrefs.SetString("LastShutdownTime", DateTime.Now.Ticks.ToString());
+        PlayerPrefs.SetString("LastShutdownTime", DateTime.Now.ToString());
     }
 }
