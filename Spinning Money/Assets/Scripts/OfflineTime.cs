@@ -16,23 +16,23 @@ public class OfflineTime : MonoBehaviour
     public UpgradeManager item3;
     public UpgradeManager item4;
 
-
     public double earnedCoins;
-
 
     private void ActiveOfflineEarningsPanel(TimeSpan time)
     {
-        int timePassed = time.Minutes;
-        if(timePassed >= 480)
+        int minPassed = time.Minutes;
+        int hoursPassed = time.Hours;
+        if(hoursPassed >= 4)
         {
-            timePassed = 480;
+            minPassed = 0;
+            hoursPassed = 4;
         }
-        TimePassedtxt.text = "TimePassed: " + time.Minutes + " minutes";
+        TimePassedtxt.text = "TimePassed: " + time.Hours + " hours and " + time.Minutes + " minutes";
         
 
         earnedCoins = item1.actualRevenue + item2.actualRevenue + item3.actualRevenue + item4.actualRevenue;
 
-        earnedCoins = timePassed * earnedCoins * 4;
+        earnedCoins = ((minPassed * earnedCoins) + (hoursPassed * 60 * earnedCoins))*4;
         EarnedCoinstxt.text = "EarnedCoins: " + earnedCoins;
 
         OfflineEarningsPanel.GetComponent<Animator>().SetBool("active", true);
