@@ -61,7 +61,6 @@ public class SaveLoadGame : MonoBehaviour
 
         ///UPGRADE MANAGER
         PlayerPrefs.SetInt("Item1", Item1.numberOfItems);
-        Debug.Log("chamada de metodo upgrade");
         PlayerPrefs.SetInt("Item2", Item2.numberOfItems);
         PlayerPrefs.SetInt("Item3", Item3.numberOfItems);
         PlayerPrefs.SetInt("Item4", Item4.numberOfItems);
@@ -152,6 +151,13 @@ public class SaveLoadGame : MonoBehaviour
         if(pause)
         {
             Save();
+            offlineTime.SaveLastShutdownTime();
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+        offlineTime.SaveLastShutdownTime();
     }
 }
