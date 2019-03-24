@@ -24,6 +24,7 @@ public class UpgradeManager : MonoBehaviour
     public Text numberOfItemsTxt;
     public GameObject announceTxt;
 
+
     private void Start()
     {
         StartCoroutine(Production());

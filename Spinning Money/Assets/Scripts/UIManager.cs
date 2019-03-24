@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
             _mps += up.actualRevenue;
         }
 
-        mpsTxt.text = "/s " + _mps.ToString("0.0");
+        mpsTxt.text = "/s " + (_mps* MoneyManager.AllmoneyMultiply).ToString("0.0");
 
         mps = _mps;
 
@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     {
         StatsMoney.text = "Money: " + MoneyManager.money.ToString("0.0");
         StatsTotalMoney.text = "Total Money: " + MoneyManager.totalMoney.ToString("0.0");
-        StatsMoneyMultipliply.text = "Money Multiply: " + MoneyManager.moneyMultiply;
+        StatsMoneyMultipliply.text = "Money Multiply: " + MoneyManager.moneyMultiply*MoneyManager.AllmoneyMultiply;
     }
 
 }

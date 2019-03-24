@@ -11,6 +11,8 @@ public class OfflineTime : MonoBehaviour
     public Text TimePassedtxt;
     public Text EarnedCoinstxt;
 
+    public Button doubleCoinsButton;
+
     public UpgradeManager item1;
     public UpgradeManager item2;
     public UpgradeManager item3;
@@ -27,7 +29,7 @@ public class OfflineTime : MonoBehaviour
             minPassed = 0;
             hoursPassed = 4;
         }
-        TimePassedtxt.text = "TimePassed: " + time.Hours + " hours and " + time.Minutes + " minutes";
+        TimePassedtxt.text = "TimePassed: " + minPassed + " hours and " + hoursPassed + " minutes";
         
 
         earnedCoins = item1.actualRevenue + item2.actualRevenue + item3.actualRevenue + item4.actualRevenue;
@@ -48,6 +50,7 @@ public class OfflineTime : MonoBehaviour
     {
         earnedCoins *= 2;
         EarnedCoinstxt.text = "EarnedCoins: " + earnedCoins;
+        doubleCoinsButton.interactable = false;
     }
 
     public void OnGameStartup()

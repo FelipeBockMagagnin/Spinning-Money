@@ -10,9 +10,99 @@ public class RewardedVideoManager : MonoBehaviour
     private RewardBasedVideoAd rewardBasedVideo;
     public OfflineTime offlineTime;
 
+    public int coinMultiplyAd;
+
+    //double coins ball manager
+    public GameObject ball;
+    public Transform spawnPosition;
+    public GameObject actualBall;
+    public GameObject doubleCoinsObjectsTxt;
+
+    public double _time;
+    public double timeWithMultiply;
+
+    private void FixedUpdate()
+    {
+        _time -= Time.deltaTime;
+        timeWithMultiply -= Time.deltaTime;
+        Debug.Log("Time: " + _time);
+
+        if (_time < 0)
+        {
+            SpawnDoubleCoinsBall();
+        }
+        
+        if(timeWithMultiply >= 0)
+        {
+            doubleCoinsObjectsTxt.SetActive(true);
+            doubleCoinsObjectsTxt.GetComponentInChildren<Text>().text = "All Money x2 per " + timeWithMultiply + " seconds";
+            MoneyManager.AllmoneyMultiply = 2;
+        }
+        else
+        {
+            doubleCoinsObjectsTxt.SetActive(false);
+            MoneyManager.AllmoneyMultiply = 1;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
+            if (hit.collider != null)
+            {
+                ClickOnDoubleCoinsBall();
+            }
+        }
+    }
+
+    public void SpawnDoubleCoinsBall()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            if(actualBall == null)
+            {
+                actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
+                Destroy(actualBall, 60);
+            }
+            _time = 300;
+            print("aaaa");
+        }
+        else
+        {
+            _time = 60;
+        }
+    }
+
+    public void ClickOnDoubleCoinsBall()
+    {
+        Destroy(actualBall);
+        if (rewardBasedVideo.IsLoaded())
+        {
+            rewardBasedVideo.Show();
+            timeWithMultiply = 120;
+        }
+        else
+        {
+            RequestRewardBasedVideo();
+        }
+    }
+
+    private void Awake()
+    {
+        _time = 120;
+        timeWithMultiply = -1;
+        coinMultiplyAd = 2;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
+        
+
+
         #if UNITY_ANDROID
         string appid = "ca-app-pub-3940256099942544/5224354917";
         #else
@@ -66,7 +156,6 @@ public class RewardedVideoManager : MonoBehaviour
 
     public void UserOptWatchAdMultipliCoinsBegin()
     {
-        offlineTime.WhatAdAndDoubleEarnedCoins();
         if (rewardBasedVideo.IsLoaded())
         {
             rewardBasedVideo.Show();
@@ -74,6 +163,8 @@ public class RewardedVideoManager : MonoBehaviour
         else
         {
             RequestRewardBasedVideo();
+            offlineTime.doubleCoinsButton.GetComponentInChildren<Text>().text = "No Ads Loaded :(";
+            offlineTime.WhatAdAndDoubleEarnedCoins();
         }
     }
 
@@ -101,6 +192,7 @@ public class RewardedVideoManager : MonoBehaviour
 
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
     {
+        offlineTime.WhatAdAndDoubleEarnedCoins();
     }
 
     public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)

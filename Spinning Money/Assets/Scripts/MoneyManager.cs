@@ -8,10 +8,13 @@ public static class MoneyManager
     public static double totalMoney;
     public static double moneyMultiply;
 
+    public static double AllmoneyMultiply;
+
 
 
     public static void StartGame(double _money, double _totalMoney, double _moneyMultiply)
     {
+        AllmoneyMultiply = 1;
         money = _money;
         totalMoney = _totalMoney;
         moneyMultiply = _moneyMultiply;
@@ -29,7 +32,7 @@ public static class MoneyManager
 
     public static void Pay(double value)
     {
-        money -= value;
+        money -= value * AllmoneyMultiply;
     }
 
     public static void Give(double value)
