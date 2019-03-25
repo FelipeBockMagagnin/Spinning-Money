@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     {
         StatsMoney.text = "Money: " + MoneyManager.money.ToString("0.0");
         StatsTotalMoney.text = "Total Money: " + MoneyManager.totalMoney.ToString("0.0");
-        StatsMoneyMultipliply.text = "Money Multiply: " + MoneyManager.moneyMultiply*MoneyManager.AllmoneyMultiply;
+        StatsMoneyMultipliply.text = "Money Multiply: " + MoneyManager.moneyMultiply * MoneyManager.AllmoneyMultiply;
     }
 
 }

@@ -29,7 +29,7 @@ public class OfflineTime : MonoBehaviour
             minPassed = 0;
             hoursPassed = 4;
         }
-        TimePassedtxt.text = "TimePassed: " + minPassed + " hours and " + hoursPassed + " minutes";
+        TimePassedtxt.text = "TimePassed: " + hoursPassed + " hours and " + minPassed + " minutes";
         
 
         earnedCoins = item1.actualRevenue + item2.actualRevenue + item3.actualRevenue + item4.actualRevenue;

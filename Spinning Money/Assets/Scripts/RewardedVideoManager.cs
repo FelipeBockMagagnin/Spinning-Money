@@ -35,7 +35,7 @@ public class RewardedVideoManager : MonoBehaviour
         if(timeWithMultiply >= 0)
         {
             doubleCoinsObjectsTxt.SetActive(true);
-            doubleCoinsObjectsTxt.GetComponentInChildren<Text>().text = "All Money x2 per " + timeWithMultiply + " seconds";
+            doubleCoinsObjectsTxt.GetComponentInChildren<Text>().text = "All Money x2 per " + timeWithMultiply.ToString("0.0") + " seconds";
             MoneyManager.AllmoneyMultiply = 2;
         }
         else
@@ -66,12 +66,13 @@ public class RewardedVideoManager : MonoBehaviour
                 actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
                 Destroy(actualBall, 60);
             }
-            _time = 300;
-            print("aaaa");
+            _time = 230;
         }
         else
         {
-            _time = 60;
+            print("Failed to load Ad");
+            RequestRewardBasedVideo();
+            _time = 20;
         }
     }
 
@@ -89,19 +90,12 @@ public class RewardedVideoManager : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        _time = 120;
-        timeWithMultiply = -1;
-        coinMultiplyAd = 2;
-    }
-
-
     // Start is called before the first frame update
     void Start()
     {
-        
-
+        _time = 60;
+        timeWithMultiply = -1;
+        coinMultiplyAd = 2;
 
         #if UNITY_ANDROID
         string appid = "ca-app-pub-3940256099942544/5224354917";
@@ -130,8 +124,6 @@ public class RewardedVideoManager : MonoBehaviour
         rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed;
         // Called when the ad click caused the user to leave the application.
         rewardBasedVideo.OnAdLeavingApplication += HandleRewardBasedVideoLeftApplication;
-
-
 
         RequestRewardBasedVideo();
     }

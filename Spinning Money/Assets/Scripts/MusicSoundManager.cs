@@ -24,9 +24,10 @@ public class MusicSoundManager : MonoBehaviour
 
     public void CheckGameSounds()
     {
-        if (PlaySounds)
+        if (PlaySounds == true)
         {
             AudioListener.pause = false;
+            AudioListener.volume = 1;
         }
         else
         {

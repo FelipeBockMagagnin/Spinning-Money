@@ -32,13 +32,13 @@ public static class MoneyManager
 
     public static void Pay(double value)
     {
-        money -= value * AllmoneyMultiply;
+        money -= value;
     }
 
     public static void Give(double value)
     {
-        money += value;
-        totalMoney += value;
+        money += value * AllmoneyMultiply;
+        totalMoney += value * AllmoneyMultiply;
     }
 
 
