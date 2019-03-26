@@ -19,13 +19,13 @@ public class InterstitialAds : MonoBehaviour
     /// </summary>
     private void RequestInterstitial()
     {
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-        #elif UNITY_IPHONE
+#elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-        #else
+#else
             string adUnitId = "unexpected_platform";
-        #endif
+#endif
 
         // Initialize an InterstitialAd.
         this.interstitial = new InterstitialAd(adUnitId);
@@ -61,13 +61,13 @@ public class InterstitialAds : MonoBehaviour
         {
             RequestInterstitial();
             TimeUntilNextAd = 22;
-        }           
+        }
     }
 
     double TimeUntilNextAd;
     private void FixedUpdate()
     {
-        if(TimeUntilNextAd > 0)
+        if (TimeUntilNextAd > 0)
         {
             TimeUntilNextAd -= Time.deltaTime;
         }

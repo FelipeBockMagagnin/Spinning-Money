@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
             _mps += up.actualRevenue;
         }
 
-        mpsTxt.text = "/s " + (_mps* MoneyManager.AllmoneyMultiply).ToString("0.0");
+        mpsTxt.text = "/s " + (_mps * MoneyManager.AllmoneyMultiply).ToString("0.0");
 
         mps = _mps;
 

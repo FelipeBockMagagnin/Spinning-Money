@@ -10,14 +10,14 @@ public class MusicSoundManager : MonoBehaviour
 
     public void StartGame(int play)
     {
-        if(play == 0)
+        if (play == 0)
         {
             PlaySounds = false;
         }
         else
         {
             PlaySounds = true;
-        }        
+        }
         CheckGameSounds();
     }
 
@@ -38,7 +38,7 @@ public class MusicSoundManager : MonoBehaviour
 
     public void SetVolumeMute()
     {
-        if(PlaySounds == true)
+        if (PlaySounds == true)
         {
             PlaySounds = false;
         }

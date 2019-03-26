@@ -10,8 +10,6 @@ public static class MoneyManager
 
     public static double AllmoneyMultiply;
 
-
-
     public static void StartGame(double _money, double _totalMoney, double _moneyMultiply)
     {
         AllmoneyMultiply = 1;
@@ -22,7 +20,7 @@ public static class MoneyManager
 
     public static void GrowMultiply(double value)
     {
-        if(value > 3)
+        if (value > 3)
         {
             value = 3;
         }
@@ -40,7 +38,5 @@ public static class MoneyManager
         money += value * AllmoneyMultiply;
         totalMoney += value * AllmoneyMultiply;
     }
-
-
 
 }

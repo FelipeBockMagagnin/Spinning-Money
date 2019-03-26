@@ -31,8 +31,8 @@ public class RewardedVideoManager : MonoBehaviour
         {
             SpawnDoubleCoinsBall();
         }
-        
-        if(timeWithMultiply >= 0)
+
+        if (timeWithMultiply >= 0)
         {
             doubleCoinsObjectsTxt.SetActive(true);
             doubleCoinsObjectsTxt.GetComponentInChildren<Text>().text = "All Money x2 per " + timeWithMultiply.ToString("0.0") + " seconds";
@@ -61,7 +61,7 @@ public class RewardedVideoManager : MonoBehaviour
     {
         if (rewardBasedVideo.IsLoaded())
         {
-            if(actualBall == null)
+            if (actualBall == null)
             {
                 actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
                 Destroy(actualBall, 60);
@@ -97,11 +97,11 @@ public class RewardedVideoManager : MonoBehaviour
         timeWithMultiply = -1;
         coinMultiplyAd = 2;
 
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         string appid = "ca-app-pub-3940256099942544/5224354917";
-        #else
+#else
         string adUnitId = "unexpected_platform";
-        #endif
+#endif
 
         MobileAds.Initialize(appid);
 
@@ -133,11 +133,11 @@ public class RewardedVideoManager : MonoBehaviour
     /// </summary>
     private void RequestRewardBasedVideo()
     {
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         string adUnitId = "ca-app-pub-3940256099942544/5224354917";
-        #else
+#else
             string adUnitId = "unexpected_platform";
-        #endif
+#endif
 
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
