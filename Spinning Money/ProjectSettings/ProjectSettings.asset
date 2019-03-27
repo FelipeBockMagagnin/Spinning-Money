@@ -242,7 +242,7 @@ PlayerSettings:
   AndroidKeystoreName: C:/Users/felip/.android/debug.keystore
   AndroidKeyaliasName: androiddebugkey
   AndroidBuildApkPerCpuArchitecture: 0
-  AndroidTVCompatibility: 1
+  AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
