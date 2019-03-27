@@ -9,10 +9,12 @@ public class GooglePlayFunctions : MonoBehaviour
 {
 
     public Text signInButtonText;
-    public Text authStatus;
+    //public GameObject startButton;
 
     private void Start()
     {
+        //EventSystem.current.firstSelectedGameObject = startButton;
+
         // Create client configuration
         PlayGamesClientConfiguration config = new
             PlayGamesClientConfiguration.Builder()
@@ -44,7 +46,6 @@ public class GooglePlayFunctions : MonoBehaviour
 
             // Reset UI
             signInButtonText.text = "Sign In";
-            authStatus.text = "";
         }
     }
 
@@ -52,21 +53,17 @@ public class GooglePlayFunctions : MonoBehaviour
     {
         if (success)
         {
-            Debug.Log("(Lollygagger) Signed in!");
+            Debug.Log("Signed in!");
 
             // Change sign-in button text
             signInButtonText.text = "Sign out";
-
-            // Show the user's name
-            authStatus.text = "Signed in as: " + Social.localUser.userName;
         }
         else
         {
-            Debug.Log("(Lollygagger) Sign-in failed...");
+            Debug.Log("Sign-in failed...");
 
             // Show failure message
             signInButtonText.text = "Sign in";
-            authStatus.text = "Sign-in failed";
         }
     }
 

@@ -55,7 +55,7 @@ public class InterstitialAds : MonoBehaviour
         if (interstitial.IsLoaded())
         {
             interstitial.Show();
-            TimeUntilNextAd = 71;
+            TimeUntilNextAd = 115;
         }
         else
         {
