@@ -9,12 +9,9 @@ public class GooglePlayFunctions : MonoBehaviour
 {
 
     public Text signInButtonText;
-    //public GameObject startButton;
 
     private void Start()
     {
-        //EventSystem.current.firstSelectedGameObject = startButton;
-
         // Create client configuration
         PlayGamesClientConfiguration config = new
             PlayGamesClientConfiguration.Builder()
