@@ -49,6 +49,9 @@ public class BagButtonManager : MonoBehaviour
 
     public GameObject ParticleSystemEvolution;
 
+
+    public ActivementsAndRanking activementsAndRanking;
+
     public void StartGame(int _baglevel, int _moneylevel, int _moneyQuantitylevel, int _rotationlevel)
     {
         actualBagLevel = _baglevel;
@@ -137,6 +140,7 @@ public class BagButtonManager : MonoBehaviour
                 MoneyManager.GrowMultiply(actualBagLevel);
                 PlayCashSound();
                 InstantiateParticleEvolution();
+                activementsAndRanking.GiveActivements("Bag", actualBagLevel);
             }
             else
             {
@@ -155,6 +159,7 @@ public class BagButtonManager : MonoBehaviour
                 Debug.Log("Comprou money upgrade, nivel atual: " + actualMoneyLevel);
                 InstantiateParticleEvolution();
                 PlayCashSound();
+                activementsAndRanking.GiveActivements("Money", actualMoneyLevel);
             } 
             else
             {
@@ -173,6 +178,7 @@ public class BagButtonManager : MonoBehaviour
                 Debug.Log("Comprou money quantity upgrade, nivel atual: " + actualMoneyQuantityLevel);
                 InstantiateParticleEvolution();
                 PlayCashSound();
+                activementsAndRanking.GiveActivements("Drop", actualMoneyQuantityLevel);
             }
             else
             {
@@ -191,6 +197,7 @@ public class BagButtonManager : MonoBehaviour
                 Debug.Log("Comprou Rotation upgrade, nivel atual: " + actualRotationLevel);
                 InstantiateParticleEvolution();
                 PlayCashSound();
+                activementsAndRanking.GiveActivements("Rotation", actualRotationLevel);
             }
             else
             {

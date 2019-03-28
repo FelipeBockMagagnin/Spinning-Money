@@ -25,7 +25,19 @@ public class GooglePlayFunctions : MonoBehaviour
         PlayGamesPlatform.Activate();
         // END THE CODE TO PASTE INTO START
 
-        PlayGamesPlatform.Instance.Authenticate(SignInCallback, true);
+        if (PlayerPrefs.HasKey("Money"))
+        {
+            PlayGamesPlatform.Instance.Authenticate(SignInCallback, true);
+        }
+        else
+        {
+            PlayGamesPlatform.Instance.Authenticate(SignInCallback, false);
+        }        
+    }
+
+    public void TrySignIn()
+    {
+        PlayGamesPlatform.Instance.Authenticate(SignInCallback, false);
     }
 
     public void SignIn()

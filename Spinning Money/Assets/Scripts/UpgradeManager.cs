@@ -24,6 +24,8 @@ public class UpgradeManager : MonoBehaviour
     public Text numberOfItemsTxt;
     public GameObject announceTxt;
 
+    public ActivementsAndRanking activementsAndRanking; 
+
 
     private void Start()
     {
@@ -33,7 +35,6 @@ public class UpgradeManager : MonoBehaviour
     public void StartGame(int _numberOfItems)
     {
         numberOfItems = _numberOfItems;
-        //seta de acordo com o numero de items
         setInitialMultiplycator();
         print("number of items: " + _numberOfItems);
         print("productionMultiplicator" + productionMultiplicator);
@@ -71,12 +72,37 @@ public class UpgradeManager : MonoBehaviour
         {   
             MoneyManager.Pay(actualCost);
             numberOfItems++;
+            activementsAndRanking.GiveActivements(SetActivementString(), numberOfItems);
             UpgradeItem();
         }
         else
         {
             print("Sem Dinheiro para comprar o item: " + name);
         }        
+    }
+
+    String SetActivementString()
+    {
+        if(_name == "Pig Banks")
+        {
+            return "Pig";
+        }
+        else if(_name == "Pickpocket")
+        {
+            return "PickPocket";
+        }
+        else if (_name == "Investors")
+        {
+            return "Investor";
+        }
+        else if (_name == "Multiverses")
+        {
+            return "Multiverse";
+        }
+        else
+        {
+            return "";
+        }
     }
 
     private void Update()

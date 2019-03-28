@@ -538,6 +538,7 @@ MonoBehaviour:
   cashSound: {fileID: 404573929}
   ParticleSystemEvolution: {fileID: 4490691372488844896, guid: eb65145719b780041a6174b93c841a4e,
     type: 3}
+  activementsAndRanking: {fileID: 2112983320}
 --- !u!4 &119687083
 Transform:
   m_ObjectHideFlags: 0
@@ -3059,7 +3060,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.05680591}
   m_AnchorMax: {x: 0.21781377, y: 0.11587766}
-  m_AnchoredPosition: {x: -306.6383, y: -861.2735}
+  m_AnchoredPosition: {x: -306.6383, y: -861.2733}
   m_SizeDelta: {x: 180.34091, y: 165.50539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &709902849
@@ -4179,6 +4180,7 @@ MonoBehaviour:
   buttonTxt: {fileID: 754120508}
   numberOfItemsTxt: {fileID: 1438304375}
   announceTxt: {fileID: 97086565}
+  activementsAndRanking: {fileID: 2112983320}
 --- !u!1 &934716920
 GameObject:
   m_ObjectHideFlags: 0
@@ -6500,7 +6502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029234877, y: 0.29134178}
   m_AnchorMax: {x: 0.21069634, y: 0.34821942}
-  m_AnchoredPosition: {x: -505.46964, y: -884.6172}
+  m_AnchoredPosition: {x: -505.46964, y: -884.6174}
   m_SizeDelta: {x: 181.03922, y: 165.7906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445059232
@@ -7313,6 +7315,7 @@ MonoBehaviour:
   buttonTxt: {fileID: 1278860822}
   numberOfItemsTxt: {fileID: 368170062}
   announceTxt: {fileID: 97086565}
+  activementsAndRanking: {fileID: 2112983320}
 --- !u!1 &1575176657
 GameObject:
   m_ObjectHideFlags: 0
@@ -8420,6 +8423,7 @@ MonoBehaviour:
   buttonTxt: {fileID: 629995631}
   numberOfItemsTxt: {fileID: 1352579384}
   announceTxt: {fileID: 97086565}
+  activementsAndRanking: {fileID: 2112983320}
 --- !u!1 &1742314472
 GameObject:
   m_ObjectHideFlags: 0
@@ -10042,6 +10046,7 @@ MonoBehaviour:
   buttonTxt: {fileID: 1902955497}
   numberOfItemsTxt: {fileID: 1682831876}
   announceTxt: {fileID: 97086565}
+  activementsAndRanking: {fileID: 2112983320}
 --- !u!1 &2004267138
 GameObject:
   m_ObjectHideFlags: 0
@@ -10689,6 +10694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achButton: {fileID: 628457929}
   ldrButton: {fileID: 348118345}
+  googlePlayFunctions: {fileID: 0}
 --- !u!4 &2112983321
 Transform:
   m_ObjectHideFlags: 0
