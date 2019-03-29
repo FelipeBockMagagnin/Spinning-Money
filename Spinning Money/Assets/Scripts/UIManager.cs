@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public Text StatsMoney;
     public Text StatsTotalMoney;
     public Text StatsMoneyMultipliply;
+    public Text StatsMPS;
 
 
     public double mps = 0;
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
         mpsTxt.text = "/s " + (_mps * MoneyManager.AllmoneyMultiply).ToString("0.0");
 
         mps = _mps;
+        MoneyManager.TotalMPS = mps;
 
         ShowStats();
 
@@ -41,6 +43,7 @@ public class UIManager : MonoBehaviour
         StatsMoney.text = "Money: " + MoneyManager.money.ToString("0.0");
         StatsTotalMoney.text = "Total Money: " + MoneyManager.totalMoney.ToString("0.0");
         StatsMoneyMultipliply.text = "Money Multiply: " + MoneyManager.moneyMultiply * MoneyManager.AllmoneyMultiply;
+        StatsMPS.text = "Money/second: " + MoneyManager.TotalMPS * MoneyManager.AllmoneyMultiply;
     }
 
 }

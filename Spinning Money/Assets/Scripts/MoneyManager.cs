@@ -10,6 +10,9 @@ public static class MoneyManager
 
     public static double AllmoneyMultiply;
 
+    public static double TotalMPS;
+
+
     public static void StartGame(double _money, double _totalMoney, double _moneyMultiply)
     {
         AllmoneyMultiply = 1;
@@ -22,10 +25,9 @@ public static class MoneyManager
     {
         if (value > 3)
         {
-            value = 3;
+            value = 2;
         }
         moneyMultiply *= value;
-        Debug.Log("money multiply: " + moneyMultiply);
     }
 
     public static void Pay(double value)
@@ -35,6 +37,7 @@ public static class MoneyManager
 
     public static void Give(double value)
     {
+        ActivementsAndRanking.UpdateLeaderBoard();
         money += value * AllmoneyMultiply;
         totalMoney += value * AllmoneyMultiply;
     }

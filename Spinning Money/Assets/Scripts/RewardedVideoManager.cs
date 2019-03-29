@@ -25,7 +25,6 @@ public class RewardedVideoManager : MonoBehaviour
     {
         _time -= Time.deltaTime;
         timeWithMultiply -= Time.deltaTime;
-        Debug.Log("Time: " + _time);
 
         if (_time < 0)
         {

@@ -64,8 +64,9 @@ public class SaveLoadGame : MonoBehaviour
         PlayerPrefs.SetInt("Item2", Item2.numberOfItems);
         PlayerPrefs.SetInt("Item3", Item3.numberOfItems);
         PlayerPrefs.SetInt("Item4", Item4.numberOfItems);
+        ActivementsAndRanking.UpdateLeaderBoard();
 
-        if(musicSoundManager.PlaySounds == true)
+        if (musicSoundManager.PlaySounds == true)
         {
             PlayerPrefs.SetInt("Audio", 1);
         } 
@@ -92,6 +93,8 @@ public class SaveLoadGame : MonoBehaviour
             double Dmoney = Double.Parse(Smoney);
             double DtotalMoney = Double.Parse(StotalMoney);
             double DmoneyMultiply = Double.Parse(SmoneyMultiply);
+
+            
 
 
             MoneyManager.StartGame(Dmoney, DtotalMoney, DmoneyMultiply);
@@ -123,6 +126,7 @@ public class SaveLoadGame : MonoBehaviour
             Item2.StartGame(PlayerPrefs.GetInt("Item2"));
             Item3.StartGame(PlayerPrefs.GetInt("Item3"));
             Item4.StartGame(PlayerPrefs.GetInt("Item4"));
+            ActivementsAndRanking.UpdateLeaderBoard();
         }
         else
         {
@@ -141,6 +145,7 @@ public class SaveLoadGame : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("Audio", 1);
+            musicSoundManager.StartGame(PlayerPrefs.GetInt("Audio"));
         }
 
 

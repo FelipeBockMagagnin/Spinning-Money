@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ActivementsAndRanking : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class ActivementsAndRanking : MonoBehaviour
     {
         if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
+            UpdateLeaderBoard();
             PlayGamesPlatform.Instance.ShowLeaderboardUI();
         }
         else
@@ -44,6 +46,26 @@ public class ActivementsAndRanking : MonoBehaviour
     {
         googlePlayFunctions.TrySignIn();
     }
+
+    public static void UpdateLeaderBoard()
+    {
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        {
+            long totalcoins = Convert.ToInt64(MoneyManager.totalMoney);
+
+            PlayGamesPlatform.Instance.ReportScore(totalcoins, GPGSIds.leaderboard_total_money,(bool success) =>{});
+
+
+            long totalMPS = Convert.ToInt64(MoneyManager.TotalMPS);
+            PlayGamesPlatform.Instance.ReportScore(totalMPS, GPGSIds.leaderboard_money_per_second, (bool success) =>{});
+
+
+
+        }
+
+
+    }
+
 
     public void GiveActivements(string name, int Level)
     {

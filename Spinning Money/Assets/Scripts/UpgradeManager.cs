@@ -36,8 +36,6 @@ public class UpgradeManager : MonoBehaviour
     {
         numberOfItems = _numberOfItems;
         setInitialMultiplycator();
-        print("number of items: " + _numberOfItems);
-        print("productionMultiplicator" + productionMultiplicator);
         actualRevenue = (initialRevenue * _numberOfItems) * productionMultiplicator;
 
         if(numberOfItems == 0)
@@ -69,7 +67,8 @@ public class UpgradeManager : MonoBehaviour
     public void BuyItem()
     {
         if(MoneyManager.money >= actualCost)
-        {   
+        {
+            ActivementsAndRanking.UpdateLeaderBoard();
             MoneyManager.Pay(actualCost);
             numberOfItems++;
             activementsAndRanking.GiveActivements(SetActivementString(), numberOfItems);
@@ -130,7 +129,6 @@ public class UpgradeManager : MonoBehaviour
     void setInitialMultiplycator()
     {
         int times = numberOfItems / 5;
-        print("Times: " + times);
         if(times == 0)
         {
             this.productionMultiplicator = 1;
