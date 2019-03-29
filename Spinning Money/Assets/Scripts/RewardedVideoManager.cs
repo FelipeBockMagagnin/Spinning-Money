@@ -42,6 +42,8 @@ public class RewardedVideoManager : MonoBehaviour
             doubleCoinsObjectsTxt.SetActive(false);
             MoneyManager.AllmoneyMultiply = 1;
         }
+
+        FreeCoinsCount();
     }
 
     private void Update()
@@ -85,7 +87,77 @@ public class RewardedVideoManager : MonoBehaviour
         }
         else
         {
+            timeWithMultiply = 120;
             RequestRewardBasedVideo();
+        }
+    }
+
+    public GameObject FreeCoinsPanel;
+    public GameObject FreeCoinsButton;
+    public Text FreeCoinPanelTxt;
+    public double TimeFreeCoins;
+
+    public void UserOptWhatAdFreeCoins()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            rewardBasedVideo.Show();
+            TimeFreeCoins = 120;
+        }
+        else
+        {
+            TimeFreeCoins = 120;
+            RequestRewardBasedVideo();
+        }
+    }
+
+    private void GiveFreeCoins()
+    {
+        CloseButtonFreeMoney();
+        openFreeCoinsPanel();
+        MoneyManager.Give(MoneyManager.TotalMPS * 120);
+        FreeCoinPanelTxt.text = "You received: " + MoneyManager.TotalMPS * 120 + " coins :)";
+    }
+
+    private void CloseButtonFreeMoney()
+    {
+        FreeCoinsButton.GetComponent<Animator>().SetBool("active", false);
+    }
+
+    public void closeFreeMoneyPanel()
+    {
+        FreeCoinsPanel.GetComponent<Animator>().SetBool("active", false);
+        TimeFreeCoins = 120;
+    }
+
+    private void openFreeCoinsPanel()
+    {
+        FreeCoinsPanel.GetComponent<Animator>().SetBool("active", true);
+    }
+
+    public void ClickOnFreeCoinButton()
+    {
+        UserOptWhatAdFreeCoins();
+        GiveFreeCoins();
+    }
+
+    void FreeCoinsCount()
+    {
+        if(TimeFreeCoins > 0)
+        {
+            TimeFreeCoins -= Time.deltaTime;
+        }
+        else
+        {
+            if (rewardBasedVideo.IsLoaded())
+            {
+                FreeCoinsButton.GetComponent<Animator>().SetBool("active", true);
+            }
+            else
+            {
+                TimeFreeCoins = 30;
+                RequestRewardBasedVideo();
+            }
         }
     }
 
@@ -93,6 +165,7 @@ public class RewardedVideoManager : MonoBehaviour
     void Start()
     {
         _time = 60;
+        TimeFreeCoins = 120;
         timeWithMultiply = -1;
         coinMultiplyAd = 2;
 
@@ -105,9 +178,6 @@ public class RewardedVideoManager : MonoBehaviour
         MobileAds.Initialize(appid);
 
         this.rewardBasedVideo = RewardBasedVideoAd.Instance;
-
-
-
 
         // Called when an ad request has successfully loaded.
         rewardBasedVideo.OnAdLoaded += HandleRewardBasedVideoLoaded;
@@ -132,11 +202,11 @@ public class RewardedVideoManager : MonoBehaviour
     /// </summary>
     private void RequestRewardBasedVideo()
     {
-#if UNITY_ANDROID
+        #if UNITY_ANDROID
         string adUnitId = "ca-app-pub-3940256099942544/5224354917";
-#else
+        #else
             string adUnitId = "unexpected_platform";
-#endif
+        #endif
 
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
