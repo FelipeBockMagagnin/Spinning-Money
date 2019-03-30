@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Globalization;
 
 public class UIManager : MonoBehaviour
 {
@@ -29,7 +31,9 @@ public class UIManager : MonoBehaviour
             _mps += up.actualRevenue;
         }
 
-        mpsTxt.text = "/s " + (_mps * MoneyManager.AllmoneyMultiply).ToString("0.0");
+        string MpsMoneyFormat = string.Format("{0:#,0.#}", _mps * MoneyManager.AllmoneyMultiply);
+
+        mpsTxt.text = "/s " + MpsMoneyFormat;
 
         mps = _mps;
         MoneyManager.TotalMPS = mps;
@@ -40,10 +44,16 @@ public class UIManager : MonoBehaviour
 
     private void ShowStats()
     {
-        StatsMoney.text = "Money: " + MoneyManager.money.ToString("0.0");
-        StatsTotalMoney.text = "Total Money: " + MoneyManager.totalMoney.ToString("0.0");
+        string moneyFormat = string.Format("{0:#,0.#}", MoneyManager.money);
+        StatsMoney.text = "Money: " + moneyFormat;
+
+        string totalMoneyFormat = string.Format("{0:#,0.#}", MoneyManager.totalMoney);
+        StatsTotalMoney.text = "Total Money: " + totalMoneyFormat;
+
         StatsMoneyMultipliply.text = "Money Multiply: " + MoneyManager.moneyMultiply * MoneyManager.AllmoneyMultiply;
-        StatsMPS.text = "Money/second: " + MoneyManager.TotalMPS * MoneyManager.AllmoneyMultiply;
+
+        string MpsMoneyFormat = string.Format("{0:#,0.#}", mps * MoneyManager.AllmoneyMultiply);
+        StatsMPS.text = "Money/second: " + MpsMoneyFormat;
     }
 
 }

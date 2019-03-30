@@ -34,8 +34,10 @@ public class OfflineTime : MonoBehaviour
 
         earnedCoins = item1.actualRevenue + item2.actualRevenue + item3.actualRevenue + item4.actualRevenue;
 
-        earnedCoins = ((minPassed * earnedCoins) + (hoursPassed * 60 * earnedCoins)) * 4;
-        EarnedCoinstxt.text = "EarnedCoins: " + earnedCoins;
+        earnedCoins = ((minPassed * earnedCoins) + (hoursPassed * 60 * earnedCoins)) * 2;
+
+        string moneyFormat = string.Format("{0:#,0.#}", earnedCoins * MoneyManager.AllmoneyMultiply);
+        EarnedCoinstxt.text = "EarnedCoins: " + moneyFormat;
 
         OfflineEarningsPanel.GetComponent<Animator>().SetBool("active", true);
     }
@@ -49,7 +51,8 @@ public class OfflineTime : MonoBehaviour
     public void WhatAdAndDoubleEarnedCoins()
     {
         earnedCoins *= 2;
-        EarnedCoinstxt.text = "EarnedCoins: " + earnedCoins;
+        string moneyFormat = string.Format("{0:#,0.#}", earnedCoins * MoneyManager.AllmoneyMultiply);
+        EarnedCoinstxt.text = "EarnedCoins: " + moneyFormat;
         doubleCoinsButton.interactable = false;
     }
 

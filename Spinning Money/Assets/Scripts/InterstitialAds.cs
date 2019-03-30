@@ -43,8 +43,13 @@ public class InterstitialAds : MonoBehaviour
 
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
-        // Load the interstitial with the request.
-        this.interstitial.LoadAd(request);
+
+
+        if (RewardedVideoManager.AdsEnabled == true)
+        {
+            // Load the interstitial with the request.
+            this.interstitial.LoadAd(request);
+        }
     }
 
     /// <summary>
@@ -52,15 +57,22 @@ public class InterstitialAds : MonoBehaviour
     /// </summary>
     public void ShowInterstitalAd()
     {
-        if (interstitial.IsLoaded())
+        if (RewardedVideoManager.AdsEnabled == true)
         {
-            interstitial.Show();
-            TimeUntilNextAd = 115;
+            if (interstitial.IsLoaded())
+            {
+                interstitial.Show();
+                TimeUntilNextAd = 115;
+            }
+            else
+            {
+                RequestInterstitial();
+                TimeUntilNextAd = 22;
+            }
         }
         else
         {
-            RequestInterstitial();
-            TimeUntilNextAd = 22;
+            TimeUntilNextAd = 1000;
         }
     }
 

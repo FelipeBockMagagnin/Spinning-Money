@@ -106,7 +106,8 @@ public class UpgradeManager : MonoBehaviour
 
     private void Update()
     {
-        buttonTxt.text = actualCost.ToString("0.0");
+        string moneyFormat = string.Format("{0:#,0.#}", actualCost);
+        buttonTxt.text = moneyFormat;
         numberOfItemsTxt.text = numberOfItems.ToString();
         if(MoneyManager.money >= actualCost)
         {
@@ -162,14 +163,4 @@ public class UpgradeManager : MonoBehaviour
         announceTxt.GetComponent<Animator>().SetTrigger("ShowMessage");
         announceTxt.GetComponentInChildren<Text>().text = _name + " prodution multiplied by " + _productionGrow;
     }
-
-
-
-
-
-
-
-
-
-
 }

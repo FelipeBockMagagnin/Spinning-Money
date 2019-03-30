@@ -27,7 +27,6 @@ public class ActivementsAndRanking : MonoBehaviour
     {
         if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
-            UpdateLeaderBoard();
             PlayGamesPlatform.Instance.ShowLeaderboardUI();
         }
         else

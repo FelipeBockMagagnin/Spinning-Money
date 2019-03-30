@@ -76,7 +76,8 @@ public class BagButtonManager : MonoBehaviour
         }
         else
         {
-            bagPricetxt.text = bagValues[actualBagLevel - 1].ToString();
+            string moneyFormat = string.Format("{0:#,0.#}", bagValues[actualBagLevel - 1]);
+            bagPricetxt.text = moneyFormat;
             baglevelTxt.text = actualBagLevel.ToString();
         }
 
@@ -88,7 +89,8 @@ public class BagButtonManager : MonoBehaviour
         }
         else
         {
-            moneyPricetxt.text = moneyValues[actualMoneyLevel - 1].ToString();
+            string moneyFormat = string.Format("{0:#,0.#}", moneyValues[actualMoneyLevel - 1]);
+            moneyPricetxt.text = moneyFormat;
             moneylevelTxt.text = actualMoneyLevel.ToString();
         }
 
@@ -99,7 +101,8 @@ public class BagButtonManager : MonoBehaviour
         }
         else
         {
-            moneyQuantityPricetxt.text = moneyQuantityValues[actualMoneyQuantityLevel - 1].ToString();
+            string moneyFormat = string.Format("{0:#,0.#}", moneyQuantityValues[actualMoneyQuantityLevel - 1]);
+            moneyQuantityPricetxt.text = moneyFormat;
             moneyQuantityleveltxt.text = actualMoneyQuantityLevel.ToString();
         }
 
@@ -111,7 +114,8 @@ public class BagButtonManager : MonoBehaviour
         }
         else
         {
-            rotationPricetxt.text = rotationValues[actualRotationLevel - 1].ToString();
+            string moneyFormat = string.Format("{0:#,0.#}", rotationValues[actualRotationLevel - 1]);
+            rotationPricetxt.text = moneyFormat;
             rotationlevelTxt.text = actualRotationLevel.ToString();
         }        
     }

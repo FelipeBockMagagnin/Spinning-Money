@@ -7,9 +7,13 @@ using UnityEngine.UI;
 
 public class RewardedVideoManager : MonoBehaviour
 {
+
+    public static bool AdsEnabled;
+
+    
     private RewardBasedVideoAd rewardBasedVideo;
     public OfflineTime offlineTime;
-
+    
     public int coinMultiplyAd;
 
     //double coins ball manager
@@ -60,7 +64,25 @@ public class RewardedVideoManager : MonoBehaviour
 
     public void SpawnDoubleCoinsBall()
     {
-        if (rewardBasedVideo.IsLoaded())
+        if (AdsEnabled == true)
+        {
+            if (rewardBasedVideo.IsLoaded())
+            {
+                if (actualBall == null)
+                {
+                    actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
+                    Destroy(actualBall, 60);
+                }
+                _time = 230;
+            }
+            else
+            {
+                print("Failed to load Ad");
+                RequestRewardBasedVideo();
+                _time = 20;
+            }
+        }
+        else
         {
             if (actualBall == null)
             {
@@ -69,26 +91,27 @@ public class RewardedVideoManager : MonoBehaviour
             }
             _time = 230;
         }
-        else
-        {
-            print("Failed to load Ad");
-            RequestRewardBasedVideo();
-            _time = 20;
-        }
     }
 
     public void ClickOnDoubleCoinsBall()
     {
         Destroy(actualBall);
-        if (rewardBasedVideo.IsLoaded())
+        if (AdsEnabled)
         {
-            rewardBasedVideo.Show();
-            timeWithMultiply = 120;
+            if (rewardBasedVideo.IsLoaded())
+            {
+                rewardBasedVideo.Show();
+                timeWithMultiply = 120;
+            }
+            else
+            {
+                timeWithMultiply = 120;
+                RequestRewardBasedVideo();
+            }
         }
         else
         {
             timeWithMultiply = 120;
-            RequestRewardBasedVideo();
         }
     }
 
@@ -115,8 +138,8 @@ public class RewardedVideoManager : MonoBehaviour
     {
         CloseButtonFreeMoney();
         openFreeCoinsPanel();
-        MoneyManager.Give(MoneyManager.TotalMPS * 120);
-        FreeCoinPanelTxt.text = "You received: " + MoneyManager.TotalMPS * 120 + " coins :)";
+        MoneyManager.Give(MoneyManager.TotalMPS * 90);
+        FreeCoinPanelTxt.text = "You received: " + MoneyManager.TotalMPS * 120 * MoneyManager.AllmoneyMultiply + " coins :)";
     }
 
     private void CloseButtonFreeMoney()
@@ -137,7 +160,10 @@ public class RewardedVideoManager : MonoBehaviour
 
     public void ClickOnFreeCoinButton()
     {
-        UserOptWhatAdFreeCoins();
+        if (AdsEnabled == true)
+        {
+            UserOptWhatAdFreeCoins();
+        }
         GiveFreeCoins();
     }
 
@@ -149,14 +175,21 @@ public class RewardedVideoManager : MonoBehaviour
         }
         else
         {
-            if (rewardBasedVideo.IsLoaded())
+            if (AdsEnabled == true)
             {
-                FreeCoinsButton.GetComponent<Animator>().SetBool("active", true);
+                if (rewardBasedVideo.IsLoaded())
+                {
+                    FreeCoinsButton.GetComponent<Animator>().SetBool("active", true);
+                }
+                else
+                {
+                    TimeFreeCoins = 30;
+                    RequestRewardBasedVideo();
+                }
             }
             else
             {
-                TimeFreeCoins = 30;
-                RequestRewardBasedVideo();
+                FreeCoinsButton.GetComponent<Animator>().SetBool("active", true);
             }
         }
     }
@@ -164,16 +197,32 @@ public class RewardedVideoManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.HasKey("ADS"))
+        {
+            if (PlayerPrefs.GetInt("ADS") == 1)
+            {
+                AdsEnabled = false;
+            }
+            else
+            {
+                AdsEnabled = true;
+            }
+        }
+        else
+        {
+            AdsEnabled = true;
+        }
+
         _time = 60;
         TimeFreeCoins = 120;
         timeWithMultiply = -1;
         coinMultiplyAd = 2;
 
-#if UNITY_ANDROID
+        #if UNITY_ANDROID
         string appid = "ca-app-pub-3940256099942544/5224354917";
-#else
+        #else
         string adUnitId = "unexpected_platform";
-#endif
+        #endif
 
         MobileAds.Initialize(appid);
 
@@ -194,7 +243,10 @@ public class RewardedVideoManager : MonoBehaviour
         // Called when the ad click caused the user to leave the application.
         rewardBasedVideo.OnAdLeavingApplication += HandleRewardBasedVideoLeftApplication;
 
-        RequestRewardBasedVideo();
+        if (AdsEnabled == true)
+        {
+            RequestRewardBasedVideo();
+        }
     }
 
     /// <summary>
@@ -217,15 +269,22 @@ public class RewardedVideoManager : MonoBehaviour
 
     public void UserOptWatchAdMultipliCoinsBegin()
     {
-        if (rewardBasedVideo.IsLoaded())
+        if (AdsEnabled == true)
         {
-            rewardBasedVideo.Show();
+            if (rewardBasedVideo.IsLoaded())
+            {
+                rewardBasedVideo.Show();
+            }
+            else
+            {
+                RequestRewardBasedVideo();
+                offlineTime.doubleCoinsButton.GetComponentInChildren<Text>().text = "No Ads Loaded :(";
+                offlineTime.WhatAdAndDoubleEarnedCoins();
+            }
         }
         else
         {
-            RequestRewardBasedVideo();
-            offlineTime.doubleCoinsButton.GetComponentInChildren<Text>().text = "No Ads Loaded :(";
-            offlineTime.WhatAdAndDoubleEarnedCoins();
+            offlineTime.doubleCoinsButton.GetComponentInChildren<Text>().text = ":)";
         }
     }
 
