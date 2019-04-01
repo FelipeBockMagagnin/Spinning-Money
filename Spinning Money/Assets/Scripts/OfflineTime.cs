@@ -34,7 +34,7 @@ public class OfflineTime : MonoBehaviour
 
         earnedCoins = item1.actualRevenue + item2.actualRevenue + item3.actualRevenue + item4.actualRevenue;
 
-        earnedCoins = ((minPassed * earnedCoins) + (hoursPassed * 60 * earnedCoins)) * 2;
+        earnedCoins = ((minPassed * earnedCoins) + (hoursPassed * 60 * earnedCoins)) * 5;
 
         string moneyFormat = string.Format("{0:#,0.#}", earnedCoins * MoneyManager.AllmoneyMultiply);
         EarnedCoinstxt.text = "EarnedCoins: " + moneyFormat;
