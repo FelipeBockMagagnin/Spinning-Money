@@ -126,8 +126,7 @@ namespace CompleteProject
             if (String.Equals(args.purchasedProduct.definition.id, kProductIDNonConsumable, StringComparison.Ordinal))
             {
                 //save item to the player
-                PlayerPrefs.SetInt("ADS", 1);
-                
+                PlayerPrefs.SetInt("ADS", 1);                
             }
 
             // Return a flag indicating whether this product has completely been received, or if the application needs 

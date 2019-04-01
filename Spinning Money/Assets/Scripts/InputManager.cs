@@ -68,7 +68,7 @@ public class InputManager : MonoBehaviour
         lastZ = thisZ;
 
 
-        MoneyManager.money += ((x + y + z) / 5) * MoneyManager.moneyMultiply;
+        MoneyManager.money += ((x + y + z) / 8) * MoneyManager.moneyMultiply;
 
 
         CountTimeWithoutStopShaking();

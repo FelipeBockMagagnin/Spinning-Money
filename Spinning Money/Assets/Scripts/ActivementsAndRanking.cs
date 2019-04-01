@@ -54,15 +54,9 @@ public class ActivementsAndRanking : MonoBehaviour
 
             PlayGamesPlatform.Instance.ReportScore(totalcoins, GPGSIds.leaderboard_total_money,(bool success) =>{});
 
-
             long totalMPS = Convert.ToInt64(MoneyManager.TotalMPS);
             PlayGamesPlatform.Instance.ReportScore(totalMPS, GPGSIds.leaderboard_money_per_second, (bool success) =>{});
-
-
-
         }
-
-
     }
 
 

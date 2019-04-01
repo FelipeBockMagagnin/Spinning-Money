@@ -28,10 +28,12 @@ public class MusicSoundManager : MonoBehaviour
         {
             AudioListener.pause = false;
             AudioListener.volume = 1;
+            PlayerPrefs.SetInt("Audio", 1);
         }
         else
         {
             AudioListener.pause = true;
+            PlayerPrefs.SetInt("Audio", 0);
         }
     }
 

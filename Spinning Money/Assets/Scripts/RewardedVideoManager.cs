@@ -22,8 +22,11 @@ public class RewardedVideoManager : MonoBehaviour
     public GameObject actualBall;
     public GameObject doubleCoinsObjectsTxt;
 
-    public double _time;
-    public double timeWithMultiply;
+    private double _time;
+    private double timeWithMultiply;
+
+
+    public GameObject AdsButton;
 
     private void FixedUpdate()
     {
@@ -202,16 +205,21 @@ public class RewardedVideoManager : MonoBehaviour
             if (PlayerPrefs.GetInt("ADS") == 1)
             {
                 AdsEnabled = false;
+                AdsButton.SetActive(false);
             }
             else
             {
                 AdsEnabled = true;
+                AdsButton.SetActive(true);
             }
         }
         else
         {
             AdsEnabled = true;
+            AdsButton.SetActive(true);
         }
+
+        Debug.Log("Ads: " + PlayerPrefs.GetInt("ADS"));
 
         _time = 60;
         TimeFreeCoins = 120;
