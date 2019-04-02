@@ -22,7 +22,8 @@ public class UIManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moneyTxt.text = MoneyManager.money.ToString("0.0");
+        string MoneyFormat = string.Format("{0:#,0.#}", MoneyManager.money);
+        moneyTxt.text = MoneyFormat;
 
         double _mps = 0;
 

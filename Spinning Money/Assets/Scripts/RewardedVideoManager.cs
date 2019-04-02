@@ -282,6 +282,7 @@ public class RewardedVideoManager : MonoBehaviour
             if (rewardBasedVideo.IsLoaded())
             {
                 rewardBasedVideo.Show();
+                offlineTime.doubleCoinsButton.GetComponentInChildren<Text>().text = ":)";
             }
             else
             {
@@ -293,6 +294,7 @@ public class RewardedVideoManager : MonoBehaviour
         else
         {
             offlineTime.doubleCoinsButton.GetComponentInChildren<Text>().text = ":)";
+            offlineTime.WhatAdAndDoubleEarnedCoins();
         }
     }
 

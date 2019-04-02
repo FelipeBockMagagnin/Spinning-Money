@@ -25,6 +25,7 @@ public class ActivementsAndRanking : MonoBehaviour
 
     public void ShowLeaderboards()
     {
+        UpdateLeaderBoard();
         if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
             PlayGamesPlatform.Instance.ShowLeaderboardUI();
@@ -92,10 +93,6 @@ public class ActivementsAndRanking : MonoBehaviour
                     break;
             }
 
-        }
-        else
-        {
-            googlePlayFunctions.TrySignIn();
         }
     }
 

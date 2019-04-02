@@ -19,6 +19,7 @@ public static class MoneyManager
         money = _money;
         totalMoney = _totalMoney;
         moneyMultiply = _moneyMultiply;
+        ActivementsAndRanking.UpdateLeaderBoard();
     }
 
     public static void GrowMultiply(double value)
@@ -37,7 +38,6 @@ public static class MoneyManager
 
     public static void Give(double value)
     {
-        ActivementsAndRanking.UpdateLeaderBoard();
         money += value * AllmoneyMultiply;
         totalMoney += value * AllmoneyMultiply;
     }
