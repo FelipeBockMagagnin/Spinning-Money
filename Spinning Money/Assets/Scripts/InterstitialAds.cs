@@ -8,10 +8,11 @@ public class InterstitialAds : MonoBehaviour
 {
     private InterstitialAd interstitial;
 
+
     private void Start()
     {
         RequestInterstitial();
-        TimeUntilNextAd = 200;
+        TimeUntilNextAd = 210;
     }
 
     /// <summary>
@@ -62,7 +63,7 @@ public class InterstitialAds : MonoBehaviour
             if (interstitial.IsLoaded())
             {
                 interstitial.Show();
-                TimeUntilNextAd = 115;
+                TimeUntilNextAd = 145;
             }
             else
             {

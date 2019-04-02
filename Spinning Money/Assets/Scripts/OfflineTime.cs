@@ -29,7 +29,7 @@ public class OfflineTime : MonoBehaviour
             minPassed = 0;
             hoursPassed = 4;
         }
-        TimePassedtxt.text = "TimePassed: " + hoursPassed + " hours and " + minPassed + " minutes";
+        TimePassedtxt.text = hoursPassed + "h:" + minPassed + "min";
 
 
         earnedCoins = item1.actualRevenue + item2.actualRevenue + item3.actualRevenue + item4.actualRevenue;
@@ -37,7 +37,7 @@ public class OfflineTime : MonoBehaviour
         earnedCoins = ((minPassed * earnedCoins) + (hoursPassed * 60 * earnedCoins)) * 5;
 
         string moneyFormat = string.Format("{0:#,0.#}", earnedCoins * MoneyManager.AllmoneyMultiply);
-        EarnedCoinstxt.text = "EarnedCoins: " + moneyFormat;
+        EarnedCoinstxt.text = "$" + moneyFormat;
 
         OfflineEarningsPanel.GetComponent<Animator>().SetBool("active", true);
     }
@@ -52,7 +52,7 @@ public class OfflineTime : MonoBehaviour
     {
         earnedCoins *= 2;
         string moneyFormat = string.Format("{0:#,0.#}", earnedCoins * MoneyManager.AllmoneyMultiply);
-        EarnedCoinstxt.text = "EarnedCoins: " + moneyFormat;
+        EarnedCoinstxt.text = "$" + moneyFormat;
         doubleCoinsButton.interactable = false;
     }
 

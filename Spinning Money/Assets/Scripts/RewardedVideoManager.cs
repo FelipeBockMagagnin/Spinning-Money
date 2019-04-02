@@ -74,9 +74,9 @@ public class RewardedVideoManager : MonoBehaviour
                 if (actualBall == null)
                 {
                     actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
-                    Destroy(actualBall, 60);
+                    Destroy(actualBall, 20);
                 }
-                _time = 230;
+                _time = 240;
             }
             else
             {
@@ -90,9 +90,9 @@ public class RewardedVideoManager : MonoBehaviour
             if (actualBall == null)
             {
                 actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
-                Destroy(actualBall, 60);
+                Destroy(actualBall, 20);
             }
-            _time = 230;
+            _time = 240;
         }
     }
 
@@ -128,11 +128,11 @@ public class RewardedVideoManager : MonoBehaviour
         if (rewardBasedVideo.IsLoaded())
         {
             rewardBasedVideo.Show();
-            TimeFreeCoins = 120;
+            TimeFreeCoins = 180;
         }
         else
         {
-            TimeFreeCoins = 120;
+            TimeFreeCoins = 180;
             RequestRewardBasedVideo();
         }
     }
@@ -153,7 +153,7 @@ public class RewardedVideoManager : MonoBehaviour
     public void closeFreeMoneyPanel()
     {
         FreeCoinsPanel.GetComponent<Animator>().SetBool("active", false);
-        TimeFreeCoins = 120;
+        TimeFreeCoins = 150;
     }
 
     private void openFreeCoinsPanel()
@@ -221,8 +221,8 @@ public class RewardedVideoManager : MonoBehaviour
 
         Debug.Log("Ads: " + PlayerPrefs.GetInt("ADS"));
 
-        _time = 60;
-        TimeFreeCoins = 120;
+        _time = 80;
+        TimeFreeCoins = 160;
         timeWithMultiply = -1;
         coinMultiplyAd = 2;
 
