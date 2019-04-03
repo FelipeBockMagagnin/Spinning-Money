@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class GooglePlayFunctions : MonoBehaviour
 {
-
     public Text signInButtonText;
 
     private void Start()
@@ -35,11 +34,9 @@ public class GooglePlayFunctions : MonoBehaviour
         }        
     }
 
-    public void TrySignIn()
-    {
-        PlayGamesPlatform.Instance.Authenticate(SignInCallback, false);
-    }
-
+    /// <summary>
+    /// Sign in to the google play
+    /// </summary>
     public void SignIn()
     {
         if (!PlayGamesPlatform.Instance.localUser.authenticated)
@@ -58,6 +55,10 @@ public class GooglePlayFunctions : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Verify if the user is logged
+    /// </summary>
+    /// <param name="success"></param>
     public void SignInCallback(bool success)
     {
         if (success)
@@ -75,6 +76,4 @@ public class GooglePlayFunctions : MonoBehaviour
             signInButtonText.text = "Sign in";
         }
     }
-
-
 }

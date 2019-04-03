@@ -7,26 +7,28 @@ using System;
 public class InterstitialAds : MonoBehaviour
 {
     private InterstitialAd interstitial;
-
+    private float initialWaitTime = 210;
+    private float normalWaitTime = 145;
+    private float failedWaitTime = 22;
 
     private void Start()
     {
         RequestInterstitial();
-        TimeUntilNextAd = 210;
+        TimeUntilNextAd = initialWaitTime;
     }
 
     /// <summary>
-    /// Requisita um ad para se mostrado
+    /// Request ad to show
     /// </summary>
     private void RequestInterstitial()
     {
-#if UNITY_ANDROID
+        #if UNITY_ANDROID
         string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-#elif UNITY_IPHONE
+        #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-#else
+        #else
             string adUnitId = "unexpected_platform";
-#endif
+        #endif
 
         // Initialize an InterstitialAd.
         this.interstitial = new InterstitialAd(adUnitId);
@@ -54,7 +56,7 @@ public class InterstitialAds : MonoBehaviour
     }
 
     /// <summary>
-    /// Mostra o ad carregado ao usuario
+    /// Show the ad loaded
     /// </summary>
     public void ShowInterstitalAd()
     {
@@ -63,12 +65,12 @@ public class InterstitialAds : MonoBehaviour
             if (interstitial.IsLoaded())
             {
                 interstitial.Show();
-                TimeUntilNextAd = 145;
+                TimeUntilNextAd = normalWaitTime;
             }
             else
             {
                 RequestInterstitial();
-                TimeUntilNextAd = 22;
+                TimeUntilNextAd = failedWaitTime;
             }
         }
         else
@@ -77,7 +79,7 @@ public class InterstitialAds : MonoBehaviour
         }
     }
 
-    double TimeUntilNextAd;
+    private double TimeUntilNextAd;
     private void FixedUpdate()
     {
         if (TimeUntilNextAd > 0)
@@ -89,7 +91,6 @@ public class InterstitialAds : MonoBehaviour
             ShowInterstitalAd();
         }
     }
-
 
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {

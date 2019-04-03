@@ -11,6 +11,7 @@ public class LoadingScreen : MonoBehaviour
     private bool isLoading;
     // The rect transform of the bar fill game object:
     private float timeElapsed;
+
     private void Awake()
     {
         // Singleton logic:
@@ -27,6 +28,7 @@ public class LoadingScreen : MonoBehaviour
         }
         Hide();
     }
+
     private void Update()
     {
         if (isLoading)

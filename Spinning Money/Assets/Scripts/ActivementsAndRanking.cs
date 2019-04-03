@@ -8,9 +8,11 @@ public class ActivementsAndRanking : MonoBehaviour
 {
     public GameObject achButton;
     public GameObject ldrButton;
-
     public GooglePlayFunctions googlePlayFunctions;
 
+    /// <summary>
+    /// Just show a achivement
+    /// </summary>
     public void ShowAchievements()
     {
         if (PlayGamesPlatform.Instance.localUser.authenticated)
@@ -23,6 +25,9 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Just show the leaderboard
+    /// </summary>
     public void ShowLeaderboards()
     {
         UpdateLeaderBoard();
@@ -42,11 +47,9 @@ public class ActivementsAndRanking : MonoBehaviour
         achButton.SetActive(Social.localUser.authenticated);
     }
 
-    void TrySignIn()
-    {
-        googlePlayFunctions.TrySignIn();
-    }
-
+    /// <summary>
+    /// Set new values to the leaderboard
+    /// </summary>
     public static void UpdateLeaderBoard()
     {
         if (PlayGamesPlatform.Instance.localUser.authenticated)
@@ -60,7 +63,11 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Give activements from google play
+    /// </summary>
+    /// <param name="name">name of activement</param>
+    /// <param name="Level">Level of activement</param>
     public void GiveActivements(string name, int Level)
     {
         if (Social.localUser.authenticated)
@@ -96,7 +103,7 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
-    static void BagActimetents(int i)
+    private void BagActimetents(int i)
     {
         switch (i)
         {
@@ -118,7 +125,7 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
-    static void MoneyActivements(int i)
+    private void MoneyActivements(int i)
     {
         switch (i)
         {
@@ -137,7 +144,7 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
-    static void DropActivements(int i)
+    private void DropActivements(int i)
     {
         switch (i)
         {
@@ -156,7 +163,7 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
-    static void RotationActivements(int i)
+    private void RotationActivements(int i)
     {
         switch (i)
         {
@@ -175,7 +182,7 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
-    static void PigBankActivements(int i)
+    private void PigBankActivements(int i)
     {
         switch (i)
         {
@@ -203,7 +210,7 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
-    static void PickPocketActivements(int i)
+    private void PickPocketActivements(int i)
     {
         switch (i)
         {
@@ -231,7 +238,7 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
-    static void InvertorsActivements(int i)
+    private void InvertorsActivements(int i)
     {
         switch (i)
         {
@@ -259,7 +266,7 @@ public class ActivementsAndRanking : MonoBehaviour
         }
     }
 
-    static void MultiverseActivements(int i)
+    private void MultiverseActivements(int i)
     {
         switch (i)
         {
@@ -283,7 +290,6 @@ public class ActivementsAndRanking : MonoBehaviour
                 break;
         }
     }
-
 }
 
 

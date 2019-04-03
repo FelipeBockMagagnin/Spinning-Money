@@ -5,24 +5,27 @@ using UnityEngine.UI;
 
 public class BagButtonManager : MonoBehaviour
 {
+    ///BAG LEVEL UPGRADES
     [Header("Bag Level")]
     public Text bagPricetxt;
-    public Text baglevelTxt;
+    public Text baglevelTxt;    
+    public double[] bagValues;
     [HideInInspector]
     public int startBagLevel;
     [HideInInspector]
     public int actualBagLevel;
-    public double[] bagValues;
 
+    //MONEY LEVEL UPGRADE
     [Header("Money Level")]
     public Text moneyPricetxt;
     public Text moneylevelTxt;
+    public double[] moneyValues;
     [HideInInspector]
     public int startMoneyLevel;
     [HideInInspector]
     public int actualMoneyLevel;
-    public double[] moneyValues;
 
+    //MONEY QUANTITY UPGRADES
     [Header("Money Quantity Level")]
     public Text moneyQuantityPricetxt;
     public Text moneyQuantityleveltxt;
@@ -32,6 +35,7 @@ public class BagButtonManager : MonoBehaviour
     public int actualMoneyQuantityLevel;
     public double[] moneyQuantityValues;
 
+    //RTOTATION UPGRADES
     [Header("Rotation Level")]
     public Text rotationPricetxt;
     public Text rotationlevelTxt;
@@ -42,16 +46,17 @@ public class BagButtonManager : MonoBehaviour
     public double[] rotationValues;
 
     public BagManager bagManager;
-
-
     public AudioSource cashSound;
-
-
     public GameObject ParticleSystemEvolution;
-
-
     public ActivementsAndRanking activementsAndRanking;
 
+    /// <summary>
+    /// Assigns values ​​to variables when starting the game 
+    /// </summary>
+    /// <param name="_baglevel"></param>
+    /// <param name="_moneylevel"></param>
+    /// <param name="_moneyQuantitylevel"></param>
+    /// <param name="_rotationlevel"></param>
     public void StartGame(int _baglevel, int _moneylevel, int _moneyQuantitylevel, int _rotationlevel)
     {
         actualBagLevel = _baglevel;
@@ -66,8 +71,10 @@ public class BagButtonManager : MonoBehaviour
         SetTextButtons();
     }
 
-
-    void SetTextButtons()
+    /// <summary>
+    /// Change text in the UI
+    /// </summary>
+    private void SetTextButtons()
     {
         if(actualBagLevel == 6)
         {
@@ -80,8 +87,6 @@ public class BagButtonManager : MonoBehaviour
             bagPricetxt.text = moneyFormat;
             baglevelTxt.text = actualBagLevel.ToString();
         }
-
-
         if (actualMoneyLevel == 5)
         {
             moneyPricetxt.text = "Max Lvl";
@@ -93,7 +98,6 @@ public class BagButtonManager : MonoBehaviour
             moneyPricetxt.text = moneyFormat;
             moneylevelTxt.text = actualMoneyLevel.ToString();
         }
-
         if (actualMoneyQuantityLevel == 5)
         {
             moneyQuantityleveltxt.text = actualMoneyQuantityLevel.ToString();
@@ -105,8 +109,6 @@ public class BagButtonManager : MonoBehaviour
             moneyQuantityPricetxt.text = moneyFormat;
             moneyQuantityleveltxt.text = actualMoneyQuantityLevel.ToString();
         }
-
-
         if (actualRotationLevel == 5)
         {
             rotationPricetxt.text = "Max Lvl";
@@ -120,16 +122,26 @@ public class BagButtonManager : MonoBehaviour
         }        
     }
 
-    public void PlayCashSound()
+    /// <summary>
+    /// Play Cash Sound :P
+    /// </summary>
+    private void PlayCashSound()
     {
         cashSound.Play();
     }
 
-    public void InstantiateParticleEvolution()
+    /// <summary>
+    /// Instantiate a particle at 0,0.33,0
+    /// </summary>
+    private void InstantiateParticleEvolution()
     {
         Instantiate(ParticleSystemEvolution, new Vector3(0, 0.33f, 0), Quaternion.identity);
     }
 
+    /// <summary>
+    /// Buy button if have money
+    /// </summary>
+    /// <param name="name">button name</param>
     public void BuyButton(string name)
     {
         if (name == "bag upgrade")
@@ -210,7 +222,4 @@ public class BagButtonManager : MonoBehaviour
         }
         SetTextButtons();
     }
-
-
-
 }

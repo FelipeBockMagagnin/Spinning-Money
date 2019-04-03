@@ -5,24 +5,20 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    public float lastX;
-    public float lastY;
-    public float lastZ;
+    private float lastX;
+    private float lastY;
+    private float lastZ;
 
+    private float thisY;
+    private float thisX;
+    private float thisZ;
 
-    public float thisY;
-    public float thisX;
-    public float thisZ;
-
-
-    public float x;
-    public float y;
-    public float z;
+    private float x;
+    private float y;
+    private float z;
 
     public float rotationMult;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         lastX = 0;
@@ -34,18 +30,15 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         thisX = Input.acceleration.x;
         thisY = Input.acceleration.y;
         thisZ = Input.acceleration.z;
 
-
         y = Mathf.Abs(Mathf.Abs(Input.acceleration.y) - Mathf.Abs(lastY));
         x = Mathf.Abs(Mathf.Abs(Input.acceleration.x) - Mathf.Abs(lastX));
         z = Mathf.Abs(Mathf.Abs(Input.acceleration.z) - Mathf.Abs(lastZ));
-
 
         if (x <= 0.1)
         {
@@ -62,24 +55,21 @@ public class InputManager : MonoBehaviour
             z = 0;
         }
 
-
         lastX = thisX;
         lastY = thisY;
         lastZ = thisZ;
 
-
-        MoneyManager.money += ((x + y + z) / 8) * MoneyManager.moneyMultiply;
-
-
+        MoneyManager.money += ((x + y + z) / 7) * MoneyManager.moneyMultiply;
         CountTimeWithoutStopShaking();
-
-
         transform.Rotate(0, 0, z * rotationMult);
     }
 
 
-    public float timewithoutshaking = 0;
+    private float timewithoutshaking = 0;
 
+    /// <summary>
+    /// Shake the bag if shaking the phone
+    /// </summary>
     void CountTimeWithoutStopShaking()
     {
         if(x > 0.2 || y > 0.2 || z > 0.2)
@@ -103,9 +93,6 @@ public class InputManager : MonoBehaviour
 
     }
 
-
-
-        // vars
     private bool shakeOn = false;
     private float shakePower = 0.3f;
 
@@ -113,7 +100,6 @@ public class InputManager : MonoBehaviour
     private Vector3 originPosition= new Vector3(0,0.33f,0);
     private Vector3 normalPosition = new Vector3(0,0.33f,0);
 
-    // Update is called once per frame
     void Update()
     {
         // if shake is enabled

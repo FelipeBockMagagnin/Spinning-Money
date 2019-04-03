@@ -5,31 +5,32 @@ using UnityEngine;
 public class BagManager : MonoBehaviour
 {
     public Transform spawnPosition;
-
     public int bagLevel, moneyLevel, moneyQuantityLevel, rotationLevel;
-
     public Material money_1, money_2, money_3, money_4, money_5;
     public GameObject bag_1, bag_2, bag_3, bag_4, bag_5, bag_6;
-
     public InputManager inputManager;
+    private GameObject actualBag;
+    private float rotationMult;
 
-
-    public GameObject actualBag;
-
-
-    float rotationMult;
-
-    //checa os niveis para startar os objetos
+    /// <summary>
+    /// Check levels at start game, assign atributes
+    /// </summary>
+    /// <param name="_bagLevel"></param>
+    /// <param name="_moneyLevel"></param>
+    /// <param name="_moneyQuantityLevel"></param>
+    /// <param name="_rotationLevel"></param>
     public void SetLevels(int _bagLevel, int _moneyLevel, int _moneyQuantityLevel, int _rotationLevel)
     {
         bagLevel = _bagLevel;
         moneyLevel = _moneyLevel;
         moneyQuantityLevel = _moneyQuantityLevel;
         rotationLevel = _rotationLevel;
-
         setBagAtributes();
     }
 
+    /// <summary>
+    /// makes change according to the level
+    /// </summary>
     public void setBagAtributes()
     {
         //set bag level
@@ -45,19 +46,19 @@ public class BagManager : MonoBehaviour
         ChangeRotation(rotationLevel);
     }
 
-    void ChangeRotation(int _rotationLevel)
+    private void ChangeRotation(int _rotationLevel)
     {
         inputManager = actualBag.GetComponent<InputManager>();
         inputManager.rotationMult = _rotationLevel;
     }
 
-    void ChangeMoneySpawnRate(int _moneySpawnRate)
+    private void ChangeMoneySpawnRate(int _moneySpawnRate)
     {
         ParticleSystem.EmissionModule particle = actualBag.GetComponent<ParticleSystem>().emission;
         particle.rateOverTime = Mathf.Pow(2,_moneySpawnRate+1);
     }
 
-    void changeMoney(int _moneyLevel)
+    private void changeMoney(int _moneyLevel)
     {
         switch(_moneyLevel)
         {
@@ -80,7 +81,7 @@ public class BagManager : MonoBehaviour
         
     }
 
-    void spawnBag(int _baglevel)
+    private void spawnBag(int _baglevel)
     {
         if(actualBag != null)
         {

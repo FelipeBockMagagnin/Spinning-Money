@@ -20,15 +20,15 @@ namespace Assets.SimpleAndroidNotifications
             NotificationManager.CancelAll();
         }
 
-        private void OnApplicationQuit()
-        {
-            ScheduleNormal();
-        }
         private void OnApplicationPause(bool pause)
         {
             if (pause)
             {
                 ScheduleNormal();
+            }
+            else
+            {
+                CancelAll();
             }
         }
     }
