@@ -7,19 +7,19 @@ using UnityEngine.UI;
 public class OfflineTime : MonoBehaviour
 {
     public GameObject OfflineEarningsPanel;
-
     public Text TimePassedtxt;
     public Text EarnedCoinstxt;
-
     public Button doubleCoinsButton;
-
     public UpgradeManager item1;
     public UpgradeManager item2;
     public UpgradeManager item3;
     public UpgradeManager item4;
+    private double earnedCoins;
 
-    public double earnedCoins;
-
+    /// <summary>
+    /// Give offline make money
+    /// </summary>
+    /// <param name="time"></param>
     private void ActiveOfflineEarningsPanel(TimeSpan time)
     {
         int minPassed = time.Minutes;
@@ -30,15 +30,10 @@ public class OfflineTime : MonoBehaviour
             hoursPassed = 4;
         }
         TimePassedtxt.text = hoursPassed + "h:" + minPassed + "min";
-
-
         earnedCoins = item1.actualRevenue + item2.actualRevenue + item3.actualRevenue + item4.actualRevenue;
-
         earnedCoins = ((minPassed * earnedCoins) + (hoursPassed * 60 * earnedCoins)) * 5;
-
         string moneyFormat = string.Format("{0:#,0.#}", earnedCoins * MoneyManager.AllmoneyMultiply);
         EarnedCoinstxt.text = "$" + moneyFormat;
-
         OfflineEarningsPanel.GetComponent<Animator>().SetBool("active", true);
     }
 
@@ -48,6 +43,9 @@ public class OfflineTime : MonoBehaviour
         OfflineEarningsPanel.GetComponent<Animator>().SetBool("active", false);
     }
 
+    /// <summary>
+    /// if the player finished whating the ad
+    /// </summary>
     public void WhatAdAndDoubleEarnedCoins()
     {
         earnedCoins *= 2;
@@ -56,6 +54,9 @@ public class OfflineTime : MonoBehaviour
         doubleCoinsButton.interactable = false;
     }
 
+    /// <summary>
+    /// assign variables
+    /// </summary>
     public void OnGameStartup()
     {
         if (PlayerPrefs.HasKey("LastShutdownTime"))
@@ -63,9 +64,7 @@ public class OfflineTime : MonoBehaviour
             long lastShutdownTime;
             long.TryParse(PlayerPrefs.GetString("LastShutdownTime"), out lastShutdownTime);
             print("Last shutdown: " + lastShutdownTime);
-
             TimeSpan timePassed = DateTime.Now - new DateTime(lastShutdownTime);
-
             ActiveOfflineEarningsPanel(timePassed);
         }
     }

@@ -7,7 +7,11 @@ public class MusicSoundManager : MonoBehaviour
     public bool PlaySounds = true;
 
 
-
+    /// <summary>
+    /// if = 1 play music
+    /// if = 0 dont play
+    /// </summary>
+    /// <param name="play"></param>
     public void StartGame(int play)
     {
         if (play == 0)
@@ -21,7 +25,9 @@ public class MusicSoundManager : MonoBehaviour
         CheckGameSounds();
     }
 
-
+    /// <summary>
+    /// check if can play the music
+    /// </summary>
     public void CheckGameSounds()
     {
         if (PlaySounds == true)
@@ -37,7 +43,9 @@ public class MusicSoundManager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// button function
+    /// </summary>
     public void SetVolumeMute()
     {
         if (PlaySounds == true)

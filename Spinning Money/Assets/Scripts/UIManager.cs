@@ -9,15 +9,11 @@ public class UIManager : MonoBehaviour
 {
     public Text moneyTxt;
     public Text mpsTxt;
-
     public Text StatsMoney;
     public Text StatsTotalMoney;
     public Text StatsMoneyMultipliply;
     public Text StatsMPS;
-
-
     public double mps = 0;
-
     public UpgradeManager[] upgrades;
 
     private void FixedUpdate()
@@ -56,5 +52,4 @@ public class UIManager : MonoBehaviour
         string MpsMoneyFormat = string.Format("{0:#,0.#}", mps * MoneyManager.AllmoneyMultiply);
         StatsMPS.text = "Money/second: " + MpsMoneyFormat;
     }
-
 }

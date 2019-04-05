@@ -8,12 +8,9 @@ using UnityEngine.UI;
 public class RewardedVideoManager : MonoBehaviour
 {
 
-    public static bool AdsEnabled;
-
-    
+    public static bool AdsEnabled;    
     private RewardBasedVideoAd rewardBasedVideo;
-    public OfflineTime offlineTime;
-    
+    public OfflineTime offlineTime;    
     public int coinMultiplyAd;
 
     //double coins ball manager
@@ -24,180 +21,8 @@ public class RewardedVideoManager : MonoBehaviour
 
     private double _time;
     private double timeWithMultiply;
-
-
     public GameObject AdsButton;
 
-    private void FixedUpdate()
-    {
-        _time -= Time.deltaTime;
-        timeWithMultiply -= Time.deltaTime;
-
-        if (_time < 0)
-        {
-            SpawnDoubleCoinsBall();
-        }
-
-        if (timeWithMultiply >= 0)
-        {
-            doubleCoinsObjectsTxt.SetActive(true);
-            doubleCoinsObjectsTxt.GetComponentInChildren<Text>().text = "All Money x2 per " + timeWithMultiply.ToString("0.0") + " seconds";
-            MoneyManager.AllmoneyMultiply = 2;
-        }
-        else
-        {
-            doubleCoinsObjectsTxt.SetActive(false);
-            MoneyManager.AllmoneyMultiply = 1;
-        }
-
-        FreeCoinsCount();
-    }
-
-    private void Update()
-    {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-            if (hit.collider != null)
-            {
-                ClickOnDoubleCoinsBall();
-            }
-        }
-    }
-
-    public void SpawnDoubleCoinsBall()
-    {
-        if (AdsEnabled == true)
-        {
-            if (rewardBasedVideo.IsLoaded())
-            {
-                if (actualBall == null)
-                {
-                    actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
-                    Destroy(actualBall, 20);
-                }
-                _time = 240;
-            }
-            else
-            {
-                print("Failed to load Ad");
-                RequestRewardBasedVideo();
-                _time = 20;
-            }
-        }
-        else
-        {
-            if (actualBall == null)
-            {
-                actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
-                Destroy(actualBall, 20);
-            }
-            _time = 240;
-        }
-    }
-
-    public void ClickOnDoubleCoinsBall()
-    {
-        Destroy(actualBall);
-        if (AdsEnabled)
-        {
-            if (rewardBasedVideo.IsLoaded())
-            {
-                rewardBasedVideo.Show();
-                timeWithMultiply = 120;
-            }
-            else
-            {
-                timeWithMultiply = 120;
-                RequestRewardBasedVideo();
-            }
-        }
-        else
-        {
-            timeWithMultiply = 120;
-        }
-    }
-
-    public GameObject FreeCoinsPanel;
-    public GameObject FreeCoinsButton;
-    public Text FreeCoinPanelTxt;
-    public double TimeFreeCoins;
-
-    public void UserOptWhatAdFreeCoins()
-    {
-        if (rewardBasedVideo.IsLoaded())
-        {
-            rewardBasedVideo.Show();
-            TimeFreeCoins = 180;
-        }
-        else
-        {
-            TimeFreeCoins = 180;
-            RequestRewardBasedVideo();
-        }
-    }
-
-    private void GiveFreeCoins()
-    {
-        CloseButtonFreeMoney();
-        openFreeCoinsPanel();
-        MoneyManager.Give(MoneyManager.TotalMPS * 90);
-        FreeCoinPanelTxt.text = "You received: " + MoneyManager.TotalMPS * 120 * MoneyManager.AllmoneyMultiply + " coins :)";
-    }
-
-    private void CloseButtonFreeMoney()
-    {
-        FreeCoinsButton.GetComponent<Animator>().SetBool("active", false);
-    }
-
-    public void closeFreeMoneyPanel()
-    {
-        FreeCoinsPanel.GetComponent<Animator>().SetBool("active", false);
-        TimeFreeCoins = 150;
-    }
-
-    private void openFreeCoinsPanel()
-    {
-        FreeCoinsPanel.GetComponent<Animator>().SetBool("active", true);
-    }
-
-    public void ClickOnFreeCoinButton()
-    {
-        if (AdsEnabled == true)
-        {
-            UserOptWhatAdFreeCoins();
-        }
-        GiveFreeCoins();
-    }
-
-    void FreeCoinsCount()
-    {
-        if(TimeFreeCoins > 0)
-        {
-            TimeFreeCoins -= Time.deltaTime;
-        }
-        else
-        {
-            if (AdsEnabled == true)
-            {
-                if (rewardBasedVideo.IsLoaded())
-                {
-                    FreeCoinsButton.GetComponent<Animator>().SetBool("active", true);
-                }
-                else
-                {
-                    TimeFreeCoins = 30;
-                    RequestRewardBasedVideo();
-                }
-            }
-            else
-            {
-                FreeCoinsButton.GetComponent<Animator>().SetBool("active", true);
-            }
-        }
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
         if (PlayerPrefs.HasKey("ADS"))
@@ -227,7 +52,7 @@ public class RewardedVideoManager : MonoBehaviour
         coinMultiplyAd = 2;
 
         #if UNITY_ANDROID
-        string appid = "ca-app-pub-3940256099942544/5224354917";
+        string appid = "ca-app-pub-8861904667614686~5628693798";
         #else
         string adUnitId = "unexpected_platform";
         #endif
@@ -263,7 +88,7 @@ public class RewardedVideoManager : MonoBehaviour
     private void RequestRewardBasedVideo()
     {
         #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        string adUnitId = "ca-app-pub-8861904667614686/7352617236";
         #else
             string adUnitId = "unexpected_platform";
         #endif
@@ -274,6 +99,193 @@ public class RewardedVideoManager : MonoBehaviour
         // Load the rewarded video ad with the request.
         this.rewardBasedVideo.LoadAd(request, adUnitId);
     }
+
+
+    private void FixedUpdate()
+    {
+        _time -= Time.deltaTime;
+        timeWithMultiply -= Time.deltaTime;
+        if (_time < 0)
+        {
+            SpawnDoubleCoinsBall();
+        }
+
+        if (timeWithMultiply >= 0)
+        {
+            doubleCoinsObjectsTxt.SetActive(true);
+            doubleCoinsObjectsTxt.GetComponentInChildren<Text>().text = "All Money x2 per " + timeWithMultiply.ToString("0.0") + " seconds";
+            MoneyManager.AllmoneyMultiply = 2;
+        }
+        else
+        {
+            doubleCoinsObjectsTxt.SetActive(false);
+            MoneyManager.AllmoneyMultiply = 1;
+        }
+        FreeCoinsCount();
+    }
+
+    private void Update()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
+            if (hit.collider != null)
+            {
+                ClickOnDoubleCoinsBall();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Spawn a ball that live for 15 seconds
+    /// </summary>
+    public void SpawnDoubleCoinsBall()
+    {
+        if (AdsEnabled == true)
+        {
+            if (rewardBasedVideo.IsLoaded())
+            {
+                if (actualBall == null)
+                {
+                    actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
+                    Destroy(actualBall, 20);
+                }
+                _time = 240;
+            }
+            else
+            {
+                print("Failed to load Ad");
+                RequestRewardBasedVideo();
+                _time = 20;
+            }
+        }
+        else
+        {
+            if (actualBall == null)
+            {
+                actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
+                Destroy(actualBall, 20);
+            }
+            _time = 240;
+        }
+    }
+
+    /// <summary>
+    /// clicked in double coins ball, call ads
+    /// </summary>
+    public void ClickOnDoubleCoinsBall()
+    {
+        Destroy(actualBall);
+        if (AdsEnabled)
+        {
+            if (rewardBasedVideo.IsLoaded())
+            {
+                rewardBasedVideo.Show();
+                timeWithMultiply = 120;
+            }
+            else
+            {
+                timeWithMultiply = 120;
+                RequestRewardBasedVideo();
+            }
+        }
+        else
+        {
+            timeWithMultiply = 120;
+        }
+    }
+
+    public GameObject FreeCoinsPanel;
+    public GameObject FreeCoinsButton;
+    public Text FreeCoinPanelTxt;
+    public double TimeFreeCoins;
+
+    /// <summary>
+    /// clicked in fre coins ads
+    /// </summary>
+    public void UserOptWhatAdFreeCoins()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            rewardBasedVideo.Show();
+            TimeFreeCoins = 180;
+        }
+        else
+        {
+            TimeFreeCoins = 180;
+            RequestRewardBasedVideo();
+        }
+    }
+
+    /// <summary>
+    /// after finished ads
+    /// </summary>
+    private void GiveFreeCoins()
+    {
+        CloseButtonFreeMoney();
+        openFreeCoinsPanel();
+        MoneyManager.Give(MoneyManager.TotalMPS * 90);
+        FreeCoinPanelTxt.text = "You received: " + MoneyManager.TotalMPS * 120 * MoneyManager.AllmoneyMultiply + " coins :)";
+    }
+
+    private void CloseButtonFreeMoney()
+    {
+        FreeCoinsButton.GetComponent<Animator>().SetBool("active", false);
+    }
+
+    public void closeFreeMoneyPanel()
+    {
+        FreeCoinsPanel.GetComponent<Animator>().SetBool("active", false);
+        TimeFreeCoins = 150;
+    }
+
+    private void openFreeCoinsPanel()
+    {
+        FreeCoinsPanel.GetComponent<Animator>().SetBool("active", true);
+    }
+
+    public void ClickOnFreeCoinButton()
+    {
+        if (AdsEnabled == true)
+        {
+            UserOptWhatAdFreeCoins();
+        }
+        GiveFreeCoins();
+    }
+
+    /// <summary>
+    /// coint time until the next free coins ad
+    /// </summary>
+    private void FreeCoinsCount()
+    {
+        if(TimeFreeCoins > 0)
+        {
+            TimeFreeCoins -= Time.deltaTime;
+        }
+        else
+        {
+            if (AdsEnabled == true)
+            {
+                if (rewardBasedVideo.IsLoaded())
+                {
+                    FreeCoinsButton.GetComponent<Animator>().SetBool("active", true);
+                }
+                else
+                {
+                    TimeFreeCoins = 30;
+                    RequestRewardBasedVideo();
+                }
+            }
+            else
+            {
+                FreeCoinsButton.GetComponent<Animator>().SetBool("active", true);
+            }
+        }
+    }
+
+    
+
+    
 
     public void UserOptWatchAdMultipliCoinsBegin()
     {

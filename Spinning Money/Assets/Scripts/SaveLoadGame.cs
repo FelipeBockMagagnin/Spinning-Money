@@ -28,14 +28,8 @@ public class SaveLoadGame : MonoBehaviour
     public UpgradeManager Item3;
     public UpgradeManager Item4;
 
-
-
     public OfflineTime offlineTime;
-
-
     public MusicSoundManager musicSoundManager;
-
-
 
     private void Start()
     {

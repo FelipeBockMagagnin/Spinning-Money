@@ -8,22 +8,19 @@ public class UpgradeManager : MonoBehaviour
 {
 
     public string _name;
-
     public double initialCost;
     public double initialRevenue;
     public double coefficient;
     public double productionMultiplicator;
 
-    double actualCost;
+    private double actualCost;
     public double actualRevenue;
-    double actualProductivity;
+    private double actualProductivity;
 
     public int numberOfItems;
-
     public Text buttonTxt;
     public Text numberOfItemsTxt;
     public GameObject announceTxt;
-
     public ActivementsAndRanking activementsAndRanking; 
 
 
@@ -32,6 +29,10 @@ public class UpgradeManager : MonoBehaviour
         StartCoroutine(Production());
     }
 
+    /// <summary>
+    /// assign values to the valiables
+    /// </summary>
+    /// <param name="_numberOfItems"></param>
     public void StartGame(int _numberOfItems)
     {
         numberOfItems = _numberOfItems;
@@ -48,6 +49,9 @@ public class UpgradeManager : MonoBehaviour
         }        
     }
 
+    /// <summary>
+    /// set cost at start of the game
+    /// </summary>
     void setInitialActualcost()
     {
         actualCost = initialCost;
@@ -57,6 +61,10 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// product every 1 second
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Production()
     {
         MoneyManager.Give(actualRevenue);
@@ -64,6 +72,9 @@ public class UpgradeManager : MonoBehaviour
         StartCoroutine(Production());
     }
 
+    /// <summary>
+    /// buy new item
+    /// </summary>
     public void BuyItem()
     {
         if(MoneyManager.money >= actualCost)
@@ -80,7 +91,11 @@ public class UpgradeManager : MonoBehaviour
         }        
     }
 
-    String SetActivementString()
+    /// <summary>
+    /// change the name string just to match with activements
+    /// </summary>
+    /// <returns></returns>
+    private String SetActivementString()
     {
         if(_name == "Pig Banks")
         {
@@ -117,9 +132,11 @@ public class UpgradeManager : MonoBehaviour
         {
             this.GetComponent<Button>().interactable = false;
         }
-
     }
 
+    /// <summary>
+    /// upgrade an item
+    /// </summary>
     public void UpgradeItem()
     {
         setMultiply();
@@ -127,6 +144,9 @@ public class UpgradeManager : MonoBehaviour
         actualRevenue = (initialRevenue * numberOfItems) * productionMultiplicator;
     }
 
+    /// <summary>
+    /// assign value to initial multiplicator at start of the game
+    /// </summary>
     void setInitialMultiplycator()
     {
         int times = numberOfItems / 5;
@@ -144,6 +164,9 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// set multiply during the buys in the game
+    /// </summary>
     void setMultiply()
     {
         if (numberOfItems % 5 == 0)
@@ -158,6 +181,10 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// show announce of multiplicator achieved
+    /// </summary>
+    /// <param name="_productionGrow"></param>
     void ShowAnnounce(int _productionGrow)
     {
         announceTxt.GetComponent<Animator>().SetTrigger("ShowMessage");
