@@ -44,8 +44,6 @@ public class RewardedVideoManager : MonoBehaviour
             AdsButton.SetActive(true);
         }
 
-        Debug.Log("Ads: " + PlayerPrefs.GetInt("ADS"));
-
         _time = 80;
         TimeFreeCoins = 160;
         timeWithMultiply = -1;
@@ -170,6 +168,9 @@ public class RewardedVideoManager : MonoBehaviour
         }
     }
 
+
+    private bool doubleCoinsAd = false;
+
     /// <summary>
     /// clicked in double coins ball, call ads
     /// </summary>
@@ -181,11 +182,11 @@ public class RewardedVideoManager : MonoBehaviour
             if (rewardBasedVideo.IsLoaded())
             {
                 rewardBasedVideo.Show();
-                timeWithMultiply = 120;
+                doubleCoinsAd = true;
             }
             else
             {
-                timeWithMultiply = 120;
+                doubleCoinsAd = true;
                 RequestRewardBasedVideo();
             }
         }
@@ -209,9 +210,11 @@ public class RewardedVideoManager : MonoBehaviour
         {
             rewardBasedVideo.Show();
             TimeFreeCoins = 180;
+            freeCoinsAd = true;
         }
         else
         {
+            freeCoinsAd = true;
             TimeFreeCoins = 180;
             RequestRewardBasedVideo();
         }
@@ -227,6 +230,9 @@ public class RewardedVideoManager : MonoBehaviour
         MoneyManager.Give(MoneyManager.TotalMPS * 90);
         FreeCoinPanelTxt.text = "You received: " + MoneyManager.TotalMPS * 120 * MoneyManager.AllmoneyMultiply + " coins :)";
     }
+
+
+
 
     private void CloseButtonFreeMoney()
     {
@@ -244,13 +250,18 @@ public class RewardedVideoManager : MonoBehaviour
         FreeCoinsPanel.GetComponent<Animator>().SetBool("active", true);
     }
 
+    private bool freeCoinsAd = false;
+
     public void ClickOnFreeCoinButton()
     {
         if (AdsEnabled == true)
         {
             UserOptWhatAdFreeCoins();
         }
-        GiveFreeCoins();
+        else
+        {
+            GiveFreeCoins();
+        }        
     }
 
     /// <summary>
@@ -282,10 +293,6 @@ public class RewardedVideoManager : MonoBehaviour
             }
         }
     }
-
-    
-
-    
 
     public void UserOptWatchAdMultipliCoinsBegin()
     {
@@ -335,6 +342,17 @@ public class RewardedVideoManager : MonoBehaviour
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
     {
         offlineTime.WhatAdAndDoubleEarnedCoins();
+        if(doubleCoinsAd == true)
+        {
+            timeWithMultiply = 120;
+            doubleCoinsAd = false;
+        }
+
+        if(freeCoinsAd == true)
+        {
+            GiveFreeCoins();
+            freeCoinsAd = false;
+        }
     }
 
     public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)

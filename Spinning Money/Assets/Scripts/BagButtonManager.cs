@@ -152,15 +152,10 @@ public class BagButtonManager : MonoBehaviour
                 actualBagLevel++;
                 bagManager.bagLevel = actualBagLevel;
                 bagManager.setBagAtributes();                
-                Debug.Log("Comprou bag upgrade, nivel atual: " + actualBagLevel);
                 MoneyManager.GrowMultiply(actualBagLevel);
                 PlayCashSound();
                 InstantiateParticleEvolution();
                 activementsAndRanking.GiveActivements("Bag", actualBagLevel);
-            }
-            else
-            {
-                Debug.Log("Não há dinheiro para a compra ou nivel max alcançado");
             }
         }
         else if (name == "money upgrade")
@@ -172,15 +167,10 @@ public class BagButtonManager : MonoBehaviour
                 bagManager.moneyLevel = actualMoneyLevel;
                 bagManager.setBagAtributes();
                 MoneyManager.GrowMultiply(actualMoneyLevel);
-                Debug.Log("Comprou money upgrade, nivel atual: " + actualMoneyLevel);
                 InstantiateParticleEvolution();
                 PlayCashSound();
                 activementsAndRanking.GiveActivements("Money", actualMoneyLevel);
             } 
-            else
-            {
-                Debug.Log("Não há dinheiro para a compra ou nivel max alcançado");
-            }
         }
         else if (name == "money quantity upgrade")
         {
@@ -191,14 +181,9 @@ public class BagButtonManager : MonoBehaviour
                 bagManager.moneyQuantityLevel = actualMoneyQuantityLevel;
                 bagManager.setBagAtributes();
                 MoneyManager.GrowMultiply(actualMoneyQuantityLevel);
-                Debug.Log("Comprou money quantity upgrade, nivel atual: " + actualMoneyQuantityLevel);
                 InstantiateParticleEvolution();
                 PlayCashSound();
                 activementsAndRanking.GiveActivements("Drop", actualMoneyQuantityLevel);
-            }
-            else
-            {
-                Debug.Log("Não há dinheiro para a compra ou nivel max alcançado");
             }
         }
         else if (name == "rotation upgrade")
@@ -210,14 +195,9 @@ public class BagButtonManager : MonoBehaviour
                 bagManager.rotationLevel = actualRotationLevel;
                 bagManager.setBagAtributes();
                 MoneyManager.GrowMultiply(actualRotationLevel);
-                Debug.Log("Comprou Rotation upgrade, nivel atual: " + actualRotationLevel);
                 InstantiateParticleEvolution();
                 PlayCashSound();
                 activementsAndRanking.GiveActivements("Rotation", actualRotationLevel);
-            }
-            else
-            {
-                Debug.Log("Não há dinheiro para a compra ou nivel max alcançado");
             }
         }
         SetTextButtons();
