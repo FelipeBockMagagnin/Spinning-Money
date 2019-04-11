@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicSoundManager : MonoBehaviour
 {
     public bool PlaySounds = true;
+    public Image image;
+    public Sprite soundON, soundOFF;
+
 
 
     /// <summary>
@@ -35,11 +39,13 @@ public class MusicSoundManager : MonoBehaviour
             AudioListener.pause = false;
             AudioListener.volume = 1;
             PlayerPrefs.SetInt("Audio", 1);
+            image.sprite = soundON;
         }
         else
         {
             AudioListener.pause = true;
             PlayerPrefs.SetInt("Audio", 0);
+            image.sprite = soundOFF;
         }
     }
 

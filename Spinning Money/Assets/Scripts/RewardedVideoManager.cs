@@ -23,6 +23,14 @@ public class RewardedVideoManager : MonoBehaviour
     private double timeWithMultiply;
     public GameObject AdsButton;
 
+    //time constants
+    private const double doubleCoinAdWaitTime = 240;
+    private const double doubleCoinsErrorWaitTime = 20;
+    private const double timeWithDoubleCoinsTime = 120;
+    private const double freeCoinsAdWaitTime = 180;
+    private const double freeCoinsAdErrorTime = 30;
+
+
     void Start()
     {
         if (PlayerPrefs.HasKey("ADS"))
@@ -98,7 +106,6 @@ public class RewardedVideoManager : MonoBehaviour
         this.rewardBasedVideo.LoadAd(request, adUnitId);
     }
 
-
     private void FixedUpdate()
     {
         _time -= Time.deltaTime;
@@ -148,13 +155,13 @@ public class RewardedVideoManager : MonoBehaviour
                     actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
                     Destroy(actualBall, 20);
                 }
-                _time = 240;
+                _time = doubleCoinAdWaitTime;
             }
             else
             {
                 print("Failed to load Ad");
                 RequestRewardBasedVideo();
-                _time = 20;
+                _time = doubleCoinsErrorWaitTime;
             }
         }
         else
@@ -164,7 +171,7 @@ public class RewardedVideoManager : MonoBehaviour
                 actualBall = Instantiate(ball, spawnPosition.position, Quaternion.identity);
                 Destroy(actualBall, 20);
             }
-            _time = 240;
+            _time = doubleCoinAdWaitTime;
         }
     }
 
@@ -192,7 +199,7 @@ public class RewardedVideoManager : MonoBehaviour
         }
         else
         {
-            timeWithMultiply = 120;
+            timeWithMultiply = timeWithDoubleCoinsTime;
         }
     }
 
@@ -209,13 +216,13 @@ public class RewardedVideoManager : MonoBehaviour
         if (rewardBasedVideo.IsLoaded())
         {
             rewardBasedVideo.Show();
-            TimeFreeCoins = 180;
+            TimeFreeCoins = freeCoinsAdWaitTime;
             freeCoinsAd = true;
         }
         else
         {
             freeCoinsAd = true;
-            TimeFreeCoins = 180;
+            TimeFreeCoins = freeCoinsAdWaitTime;
             RequestRewardBasedVideo();
         }
     }
@@ -228,11 +235,8 @@ public class RewardedVideoManager : MonoBehaviour
         CloseButtonFreeMoney();
         openFreeCoinsPanel();
         MoneyManager.Give(MoneyManager.TotalMPS * 90);
-        FreeCoinPanelTxt.text = "You received: " + MoneyManager.TotalMPS * 120 * MoneyManager.AllmoneyMultiply + " coins :)";
+        FreeCoinPanelTxt.text = "You received: " + MoneyManager.TotalMPS * 90 * MoneyManager.AllmoneyMultiply + " coins :)";
     }
-
-
-
 
     private void CloseButtonFreeMoney()
     {
@@ -283,7 +287,7 @@ public class RewardedVideoManager : MonoBehaviour
                 }
                 else
                 {
-                    TimeFreeCoins = 30;
+                    TimeFreeCoins = freeCoinsAdErrorTime;
                     RequestRewardBasedVideo();
                 }
             }
@@ -344,7 +348,7 @@ public class RewardedVideoManager : MonoBehaviour
         offlineTime.WhatAdAndDoubleEarnedCoins();
         if(doubleCoinsAd == true)
         {
-            timeWithMultiply = 120;
+            timeWithMultiply = timeWithDoubleCoinsTime;
             doubleCoinsAd = false;
         }
 
