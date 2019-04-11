@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    private float lastX;
-    private float lastY;
-    private float lastZ;
+    public float lastX;
+    public float lastY;
+    public float lastZ;
 
-    private float thisY;
-    private float thisX;
-    private float thisZ;
+    public float thisY;
+    public float thisX;
+    public float thisZ;
 
-    private float x;
-    private float y;
-    private float z;
+    public float x;
+    public float y;
+    public float z;
+
+
 
     public float rotationMult;
 
@@ -65,7 +67,7 @@ public class InputManager : MonoBehaviour
     }
 
 
-    private float timewithoutshaking = 0;
+    public float timewithoutshaking = 0;
 
     /// <summary>
     /// Shake the bag if shaking the phone
@@ -93,7 +95,7 @@ public class InputManager : MonoBehaviour
 
     }
 
-    private bool shakeOn = false;
+    public bool shakeOn = false;
     private float shakePower = 0.3f;
 
     // sprite original position

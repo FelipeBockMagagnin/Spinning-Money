@@ -83,7 +83,7 @@ public class ActivementsAndRanking : MonoBehaviour
                 case "Drop":
                     DropActivements(Level);
                     break;
-                case "Rotation:":
+                case "Rotation":
                     RotationActivements(Level);
                     break;
                 case "Pig":

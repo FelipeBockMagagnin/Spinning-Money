@@ -645,21 +645,21 @@ MonoBehaviour:
   baglevelTxt: {fileID: 521168952}
   bagValues:
   - 2000
-  - 75000
-  - 3500000
-  - 15000000
-  - 700000000
-  - 10000000000
+  - 65000
+  - 12000000
+  - 1000000000
+  - 1000000000000
+  - 0
   startBagLevel: 0
   actualBagLevel: 0
   moneyPricetxt: {fileID: 1185416705}
   moneylevelTxt: {fileID: 1360957278}
   moneyValues:
   - 500
-  - 125000
-  - 60000000
-  - 3500000000
-  - 25000000000
+  - 225000
+  - 6000000
+  - 7000000000
+  - 0
   startMoneyLevel: 0
   actualMoneyLevel: 0
   moneyQuantityPricetxt: {fileID: 895429184}
@@ -668,20 +668,20 @@ MonoBehaviour:
   actualMoneyQuantityLevel: 0
   moneyQuantityValues:
   - 5000
-  - 650000
-  - 7000000
-  - 3000000000
-  - 100000000000
+  - 550000
+  - 40000000
+  - 40000000000
+  - 0
   rotationPricetxt: {fileID: 52487455}
   rotationlevelTxt: {fileID: 432897246}
   startRotationLevel: 0
   actualRotationLevel: 0
   rotationValues:
-  - 10000
+  - 15000
   - 950000
-  - 250000000
-  - 5000000000
-  - 500000000000
+  - 100000000
+  - 125000000000
+  - 0
   bagManager: {fileID: 379566707}
   cashSound: {fileID: 404573929}
   ParticleSystemEvolution: {fileID: 4490691372488844896, guid: eb65145719b780041a6174b93c841a4e,
@@ -4513,7 +4513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5287326, y: 0.29983363}
   m_AnchorMax: {x: 0.73946524, y: 0.51420754}
-  m_AnchoredPosition: {x: 0.56230164, y: -1.9307251}
+  m_AnchoredPosition: {x: 0.5623169, y: -1.9307251}
   m_SizeDelta: {x: -4.149994, y: 5.2599945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &923091290
@@ -7937,7 +7937,7 @@ MonoBehaviour:
   _name: Investors
   initialCost: 100000
   initialRevenue: 350
-  coefficient: 1.061
+  coefficient: 1.062
   productionMultiplicator: 1
   actualRevenue: 0
   numberOfItems: 0
@@ -8498,7 +8498,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1000
   m_Sprite: {fileID: 21300000, guid: 04699224ef2f8524bb2c40af0a927c4f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 0.7921569}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9304,7 +9304,7 @@ MonoBehaviour:
   _name: Multiverses
   initialCost: 10000000
   initialRevenue: 30000
-  coefficient: 1.062
+  coefficient: 1.064
   productionMultiplicator: 1
   actualRevenue: 0
   numberOfItems: 0
@@ -15921,10 +15921,10 @@ RectTransform:
   m_Father: {fileID: 777029223}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.07838083, y: 0.19275938}
-  m_AnchorMax: {x: 0.92226684, y: 0.9142289}
-  m_AnchoredPosition: {x: -0.5, y: 2.7000122}
-  m_SizeDelta: {x: 1.7000122, y: 7.5}
+  m_AnchorMin: {x: 0.07838083, y: 0.07700001}
+  m_AnchorMax: {x: 0.9221904, y: 0.9142289}
+  m_AnchoredPosition: {x: -0.5, y: 5.299988}
+  m_SizeDelta: {x: 1.6999998, y: 2.399994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2056704759
 MonoBehaviour:
