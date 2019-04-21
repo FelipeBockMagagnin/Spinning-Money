@@ -31,7 +31,7 @@ public static class MoneyManager
     /// <param name="value"></param>
     public static void GrowMultiply(double value)
     {
-        if (value > 3)
+        if (value == 4)
         {
             value = 2;
         }

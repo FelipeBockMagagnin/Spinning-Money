@@ -11,6 +11,8 @@ public class BagManager : MonoBehaviour
     public InputManager inputManager;
     private GameObject actualBag;
     private float rotationMult;
+    public ReviewPanel reviewPanel;
+    public FinalPanel finalPanel;
 
     /// <summary>
     /// Check levels at start game, assign atributes
@@ -28,11 +30,25 @@ public class BagManager : MonoBehaviour
         setBagAtributes();
     }
 
+    public void Update()
+    {
+        if (MoneyManager.totalMoney >= 1000000)
+        {
+            if (!PlayerPrefs.HasKey("Review"))
+            {
+                reviewPanel.activeReview();
+                PlayerPrefs.SetInt("Review", 1);
+            }
+        }
+    }
+
     /// <summary>
     /// makes change according to the level
     /// </summary>
     public void setBagAtributes()
     {
+        
+
         //set bag level
         spawnBag(bagLevel);
 
@@ -44,6 +60,15 @@ public class BagManager : MonoBehaviour
 
         //set rotation
         ChangeRotation(rotationLevel);
+
+        if (bagLevel == 6 & moneyLevel == 5 & moneyQuantityLevel == 5 & rotationLevel == 5)
+        {
+            if (!PlayerPrefs.HasKey("final"))
+            {
+                finalPanel.Open();
+                PlayerPrefs.SetInt("final", 1);
+            }
+        }
     }
 
     private void ChangeRotation(int _rotationLevel)

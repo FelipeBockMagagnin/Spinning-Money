@@ -26,6 +26,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void Start()
     {
+        showInitialtutorial();
         StartCoroutine(Production());
     }
 
@@ -185,9 +186,15 @@ public class UpgradeManager : MonoBehaviour
     /// show announce of multiplicator achieved
     /// </summary>
     /// <param name="_productionGrow"></param>
-    void ShowAnnounce(int _productionGrow)
+    private void ShowAnnounce(int _productionGrow)
     {
         announceTxt.GetComponent<Animator>().SetTrigger("ShowMessage");
         announceTxt.GetComponentInChildren<Text>().text = _name + " prodution multiplied by " + _productionGrow;
+    }
+
+    private void showInitialtutorial()
+    {
+        announceTxt.GetComponent<Animator>().SetTrigger("ShowMessage");
+        announceTxt.GetComponentInChildren<Text>().text = "Move your phone to make money :)";
     }
 }

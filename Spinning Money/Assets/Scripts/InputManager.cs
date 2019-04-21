@@ -61,7 +61,7 @@ public class InputManager : MonoBehaviour
         lastY = thisY;
         lastZ = thisZ;
 
-        MoneyManager.money += ((x + y + z) / 7) * MoneyManager.moneyMultiply;
+        MoneyManager.money += ((x + y + z) / 6) * MoneyManager.moneyMultiply;
         CountTimeWithoutStopShaking();
         transform.Rotate(0, 0, z * rotationMult);
     }
